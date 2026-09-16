@@ -404,6 +404,91 @@ def build_plan(account: dict, prov: dict, conflicts: list, mapping: dict,
                       "present on the form but not mapped to the canonical schema")
     return plan
 
+def count_metrics(plan: Plan, account: dict, mapping: dict, form_field_count: int) -> dict:
+    """Count what the tool did, separating three things people conflate.
+
+    MAPPED is every field this mapping knows how to fill.
+
+    APPLICABLE is mapped minus rows that cannot apply to this account. The form
+    holds four premises rows; an account with two locations has 28 fields in
+    rows three and four with nothing to put in them. Counting those as misses
+    penalises the tool for the account being smaller than the form.
+
+    RESOLVED is values written PLUS checkboxes deliberately left unticked. An
+    applicant is one entity type, so ticking "Corporation" means correctly
+    leaving LLC, Partnership, S-Corp and four others blank. Those are decisions,
+    not gaps -- but only the tick lands in plan.filled, so a naive count treats
+    seven correct answers as seven failures.
+
+    CAVEAT, and it is a real one: "applicable" is a judgement about what should
+    count, and a vendor choosing its own denominator is how benchmarks get
+    gamed. Both numbers are reported so a customer can pick, and the review
+    report says the definition needs confirming. See metrics_caveat().
+    """
+    mapped = len(mapping.get("fields") or {}) + sum(
+        len(sp.get("fields") or {}) * len(sp.get("indices") or [])
+        for sp in (mapping.get("repeaters") or {}).values())
+
+    # Rows the form offers that this account has no data for.
+    inapplicable = 0
+    row_detail = []
+    for group, spec in (mapping.get("repeaters") or {}).items():
+        arr = resolve(account, spec.get("path", ""))
+        have = len(arr) if isinstance(arr, list) else 0
+        slots = len(spec.get("indices") or [])
+        per_row = len(spec.get("fields") or {})
+        unused = max(0, slots - have) * per_row
+        if unused:
+            inapplicable += unused
+            row_detail.append({"group": group, "form_rows": slots,
+                               "account_rows": have, "fields_per_row": per_row,
+                               "inapplicable_fields": unused})
+
+    applicable = max(0, mapped - inapplicable)
+    written = len(plan.filled)
+    decided_blank = sum(1 for v in plan.checks.values() if not v)
+    resolved = written + decided_blank
+
+    return {
+        "form_fields": form_field_count,
+        "mapped_fields": mapped,
+        "inapplicable_fields": inapplicable,
+        "inapplicable_detail": row_detail,
+        "applicable_fields": applicable,
+        "written": written,
+        "decided_blank": decided_blank,
+        "resolved": resolved,
+        # The conservative headline: values written / every mapped field.
+        "filled": written,
+        "fill_rate": round(100 * written / mapped, 1) if mapped else 0.0,
+        # The one that reflects what the tool actually settled.
+        "resolution_rate": round(100 * resolved / applicable, 1) if applicable else 0.0,
+        "blockers": sum(1 for r in plan.review if r["severity"] == "blocker"),
+        "reviews": sum(1 for r in plan.review if r["severity"] == "review"),
+    }
+
+
+def metrics_caveat(m: dict) -> str:
+    """The sentence a customer has to agree with before the number means anything."""
+    return (
+        f"Two rates are reported because the denominator is a business decision, "
+        f"not a technical one.\n\n"
+        f"- **Fill rate {m['fill_rate']}%** ({m['written']} of {m['mapped_fields']} mapped "
+        f"fields) is the conservative reading. It counts every field this mapping "
+        f"knows about, including {m['inapplicable_fields']} in repeating rows this "
+        f"account cannot use and every checkbox correctly left unticked.\n"
+        f"- **Resolution rate {m['resolution_rate']}%** ({m['resolved']} of "
+        f"{m['applicable_fields']} applicable fields) counts what the tool actually "
+        f"settled: {m['written']} values written plus {m['decided_blank']} checkboxes "
+        f"deliberately left blank, measured against only the fields that can apply.\n\n"
+        f"ACTION REQUIRED: confirm with the customer which definition they want to "
+        f"be measured on before either number goes in a pilot report. A vendor "
+        f"picking its own denominator is how these numbers stop meaning anything. "
+        f"If they have an existing benchmark, match its definition instead of both "
+        f"of these."
+    )
+
+
 # ---------------------------------------------------------------------------
 # Writing
 # ---------------------------------------------------------------------------
@@ -473,12 +558,25 @@ def review_markdown(plan: Plan, mapping: dict, account: dict, metrics: dict) -> 
         "|---|---|",
         f"| Fillable fields on form | {metrics['form_fields']} |",
         f"| Mapped to canonical schema | {metrics['mapped_fields']} |",
-        f"| Auto-filled | {metrics['filled']} |",
-        f"| Fill rate (of mapped) | {metrics['fill_rate']}% |",
+        f"| Not applicable to this account | {metrics['inapplicable_fields']} |",
+        f"| Applicable fields | {metrics['applicable_fields']} |",
+        f"| Values written | {metrics['written']} |",
+        f"| Checkboxes correctly left blank | {metrics['decided_blank']} |",
+        f"| Resolved (written + decided) | {metrics['resolved']} |",
+        f"| **Fill rate** (written / mapped) | **{metrics['fill_rate']}%** |",
+        f"| **Resolution rate** (resolved / applicable) | **{metrics['resolution_rate']}%** |",
         f"| Blockers | {metrics['blockers']} |",
         f"| Needs review | {metrics['reviews']} |",
         "",
     ]
+    if metrics.get("inapplicable_detail"):
+        out += ["Rows the form offers that this account cannot use:", ""]
+        out += ["| Section | Form rows | This account | Fields excluded |",
+                "|---|---|---|---|"]
+        out += [f"| {d['group']} | {d['form_rows']} | {d['account_rows']} | "
+                f"{d['inapplicable_fields']} |" for d in metrics["inapplicable_detail"]]
+        out += [""]
+    out += ["### Which number to report", "", metrics_caveat(metrics), ""]
     blockers = [r for r in plan.review if r["severity"] == "blocker"]
     reviews = [r for r in plan.review if r["severity"] == "review"]
 
@@ -556,17 +654,8 @@ def main() -> None:
     any_blockers = False
     for mapping in mappings:
         plan = build_plan(account, prov, conflicts, mapping, types, multiline)
-        mapped = len(mapping.get("fields") or {}) + sum(
-            len(sp.get("fields") or {}) * len(sp.get("indices") or [])
-            for sp in (mapping.get("repeaters") or {}).values())
-        metrics = {
-            "form_fields": len(types),
-            "mapped_fields": mapped,
-            "filled": len(plan.filled),
-            "fill_rate": round(100 * len(plan.filled) / mapped, 1) if mapped else 0.0,
-            "blockers": sum(1 for r in plan.review if r["severity"] == "blocker"),
-            "reviews": sum(1 for r in plan.review if r["severity"] == "review"),
-        }
+        metrics = count_metrics(plan, account, mapping, len(types))
+        mapped = metrics["mapped_fields"]
         any_blockers = any_blockers or bool(metrics["blockers"])
 
         form_id = mapping["form"]["id"]
@@ -581,10 +670,22 @@ def main() -> None:
         combined.checks.update(plan.checks)
         combined.filled.extend(plan.filled)
 
-        print(f"{form_id}: filled {metrics['filled']}/{mapped} mapped fields "
-              f"({metrics['fill_rate']}%)  blockers={metrics['blockers']}  "
-              f"review={metrics['reviews']}")
+        print(f"{form_id}:")
+        print(f"  fill rate ........ {metrics['written']}/{metrics['mapped_fields']} "
+              f"mapped fields ({metrics['fill_rate']}%)")
+        print(f"  resolution rate .. {metrics['resolved']}/{metrics['applicable_fields']} "
+              f"applicable fields ({metrics['resolution_rate']}%)"
+              f"   [{metrics['written']} written + {metrics['decided_blank']} "
+              f"correctly left blank]")
+        if metrics["inapplicable_fields"]:
+            bits = ", ".join(f"{d['group']} {d['account_rows']}/{d['form_rows']} rows"
+                             for d in metrics["inapplicable_detail"])
+            print(f"  excluded ......... {metrics['inapplicable_fields']} fields in "
+                  f"unusable repeating rows ({bits})")
+        print(f"  blockers={metrics['blockers']}  review={metrics['reviews']}")
         print(f"  -> {os.path.join(a.outdir, form_id + '_review.md')}")
+        print(f"  ! confirm which rate the customer wants to be measured on "
+              f"(see {form_id}_review.md)")
 
     pdf_out = os.path.join(a.outdir, a.out_name)
     write_pdf(blank, pdf_out, combined, states)
