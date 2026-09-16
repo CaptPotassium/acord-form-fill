@@ -21,12 +21,33 @@ AMS CSV  ─┼─► canonical account JSON ─►──┼─ ACORD 126  →�
 loss run ─┘   (extract once)             └─ next form  →┘   + review report
 ```
 
-Current run against the real ACORD 125/126/140 packet (2016 editions):
+Current run against the real ACORD 125/126/140 packet (2016 editions, 924
+fillable fields). Two runs, because the honest answer is two numbers:
+
+**Run 1 — documents only.** What the tool produces unattended from a dec page,
+a loss run and an AMS export, with no human input:
 
 | Section | Mapped | Auto-filled | Fill rate | Blockers | Review |
 |---|---|---|---|---|---|
-| ACORD 125 | 148 | 80 | 54% | 5 | 18 |
+| ACORD 125 | 148 | 61 | 41% | 5 | 12 |
+| ACORD 126 | 53 | 31 | 58% | 0 | 6 |
+
+**Run 2 — after a CSR works the review queue.** The same account once a person
+has answered the five general information questions and supplied the per-location
+detail no document carries:
+
+| Section | Mapped | Auto-filled | Fill rate | Blockers | Review |
+|---|---|---|---|---|---|
+| ACORD 125 | 148 | 81 | 55% | 0 | 15 |
 | ACORD 126 | 53 | 31 | 58% | 0 | 3 |
+
+The 41% is the number that matters for a pilot, because it is the work that
+happens without anybody's attention. The gap to 55% is the human-in-the-loop
+cost, and it is small and bounded — five phone-call questions and a premises
+breakdown, not a re-key of the whole application. `samples/account.json` is the
+run-1 state and is extracted from the sample documents; `samples/account_reviewed.json`
+is the run-2 state, where every value a person supplied is sourced
+`csr_confirmed` or `insured_confirmed` rather than to a document.
 
 **Two numbers matter, not one.** *Coverage* is 201 of the packet's 924 fields —
 the sections sourceable from account documents. The other 723 are carrier and
@@ -35,7 +56,7 @@ signatures and office-use fields that no extraction should touch. *Fill rate* is
 how much of what we mapped actually got filled. A single blended percentage
 would understate the tool badly.
 
-The 5 blockers on ACORD 125 are the general information questions — prior
+The 5 run-1 blockers on ACORD 125 are the general information questions — prior
 cancellation, bankruptcy, judgements, foreign operations, safety program. No
 declarations page or AMS export answers those, ever. Flagging them is the tool
 telling a CSR to make a phone call.

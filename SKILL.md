@@ -87,7 +87,7 @@ and `<form_id>_review.json` per section.
 Lead with what needs human attention, not with what worked. Use this shape:
 
 ```
-Filled ACORD 125 — 80 of 148 mapped fields (54%); 148 of 924 packet fields mapped
+Filled ACORD 125 — 61 of 148 mapped fields (41%); 148 of 924 packet fields mapped
 
 Must fix before submission (3):
   • <field> — <why>

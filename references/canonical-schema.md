@@ -70,7 +70,8 @@ honestly; a guess is not.
                   "claim_number": "...", "line": "GL", "description": "...",
                   "amount_paid": 18400, "amount_reserved": 0,
                   "claim_open": false, "subrogation": false } ],
-    "loss_summary": { "years_covered": 3, "total_incurred": 74050 },
+    "loss_summary": { "years_covered": 3, "total_incurred": 74050,
+                      "valued_as_of": "05/31/2026" },
     "general_information": { "prior_cancellation": false, "bankruptcy": false,
                              "judgement_or_lien": false, "safety_program": true,
                              "foreign_operations": false, "is_subsidiary": false,
@@ -99,6 +100,7 @@ phone numbers during extraction, or transforms will double-apply.
 | `general_liability.limits.*` | number | Whole dollars, unformatted. |
 | `general_liability.classifications[]` | array | One row per class code. |
 | `losses[]` | array | Newest first is conventional but not required. |
+| `loss_summary.valued_as_of` | string | The loss run's valuation date. Capture it — a run valued months ago understates development. |
 | `general_information.*` | boolean | True/false only. Absent means unanswered, which is the honest default — no document answers these. |
 | `losses[].claim_open` | boolean | Rendered as Yes/No by the `yesno` transform. |
 | `general_liability.classifications[].premium_basis_code` | string | The form's single-letter code: P payroll, S sales, A area, C cost, U unit, M admissions. |
@@ -140,6 +142,16 @@ Keyed by the same dotted path as the value, including array indices
 }
 ```
 
-`source` is the filename, or `assumed_default` when a value came from a standing
-assumption rather than a document. Any `assumed_default` value should carry
-`confidence: "low"` so it surfaces for review.
+`source` is the filename the value was read from, or one of three non-document
+sources:
+
+| `source` | Means | Confidence |
+|---|---|---|
+| `assumed_default` | A standing assumption rather than a document. | `low`, always |
+| `csr_confirmed` | A person at the agency supplied it during review. | `medium` typically |
+| `insured_confirmed` | The insured answered it, usually on a call. | `high` is fair — a person attested to it |
+
+Never cite a document for a value that document does not contain. That is worse
+than leaving the field empty: `confidence: "high"` suppresses review of exactly
+the field that needs it, and a false citation survives audit because it looks
+sourced. If a person supplied the value, say so.

@@ -62,6 +62,12 @@ reviewer's attention. These always come from the insured:
 When these come back as blockers, that is the tool working correctly. Say so
 when reporting, so the user reads it as expected rather than as a miss.
 
+Once a person answers them, record the answer with `source: "insured_confirmed"`
+or `source: "csr_confirmed"` — never backfilled onto a document that does not
+contain it. `samples/account.json` and `samples/account_reviewed.json` are the
+same account before and after this step, and the difference between them is the
+honest measure of what still needs a human.
+
 ## Conflicts
 
 Record a conflict when two sources give different values for the same path.

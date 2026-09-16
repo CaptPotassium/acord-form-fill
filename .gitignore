@@ -1,3 +1,5 @@
 output/
+output_reviewed/
+output_sparse/
 __pycache__/
 *.pyc
