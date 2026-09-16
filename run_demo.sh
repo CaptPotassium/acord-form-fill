@@ -59,8 +59,15 @@ if [[ "${1:-}" == "--sparse" ]]; then
   exit 0
 fi
 
-echo "==> Regenerating sample input documents"
-python3 scripts/make_sample_forms.py --samples samples >/dev/null
+# The sample inputs are committed, so the demo reads them as-is. Regenerating
+# on every run rewrites their PDF timestamps and leaves the repo dirty, which
+# is confusing for anyone who clones this and runs it. Pass --regen to rebuild.
+if [[ "${REGEN:-}" == "1" ]]; then
+  echo "==> Regenerating sample input documents"
+  python3 scripts/make_sample_forms.py --samples samples >/dev/null
+else
+  echo "==> Input documents (synthetic; REGEN=1 to rebuild them)"
+fi
 echo "    samples/dec_page.pdf, samples/loss_runs.pdf, samples/ams_export.csv"
 
 echo
