@@ -118,9 +118,15 @@ The repo ships with generated stand-in forms and sample inputs. To regenerate:
 python scripts/make_sample_forms.py --outdir assets/forms --samples samples
 ```
 
-To run against real ACORD forms, place the licensed blank PDF in `assets/forms/`
-and follow `references/adding-a-form.md`. Real ACORD forms are copyrighted and
-licensed to member agencies and vendors, which is why they are not bundled here.
+`assets/forms/acord_submission_packet.pdf` is the real ACORD 125/126/140 packet
+(2016 editions, 924 fillable fields), supplied by Cooper for this exercise so the
+demo runs out of the box.
+
+Note for a real deployment: ACORD blank forms are copyrighted and licensed to
+member agencies and vendors. They belong in the customer's own forms directory,
+not in a vendor's repo — `--forms-dir` exists so the customer points at theirs.
+To add another form, drop the blank in `assets/forms/` and follow
+`references/adding-a-form.md`.
 
 ## Scripts
 

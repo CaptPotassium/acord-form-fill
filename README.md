@@ -8,7 +8,8 @@ Built as a Sales Engineer take-home for Cooper AI.
 
 ```bash
 pip install -r requirements.txt
-./run_demo.sh
+./run_demo.sh            # documents-only run, then the same account after review
+./run_demo.sh --sparse    # guardrail run: malformed and missing data
 ```
 
 ---
