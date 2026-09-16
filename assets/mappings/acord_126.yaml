@@ -1,0 +1,165 @@
+# ACORD 126 (2016/09) - Commercial General Liability Section
+#
+# Pages 5-8 of the same packet. Note the naming convention is completely
+# different from the ACORD 125 pages: this section uses ACORD's own
+# Subject_Attribute_Suffix scheme with letter-indexed repeaters (_A/_B/_C),
+# while the 125 pages use vendor naming with infix digits (ACORD_Location1_).
+# Same PDF, two schemes. This is exactly why mappings are per-form data rather
+# than logic, and why field names get dumped rather than assumed.
+#
+# The applicant and producer blocks below resolve the same canonical paths as
+# acord_125.yaml. Extraction happens once per account, not once per form.
+
+form:
+  id: acord_126
+  title: ACORD 126 - Commercial General Liability Section
+  pdf: acord_submission_packet.pdf
+  edition: 2016/09
+
+fields:
+  # --- Shared header (same canonical paths as ACORD 125) ----------------
+  Form_CompletionDate_A:
+    path: form_meta.completion_date
+    transform: date
+    validate: date
+  Producer_FullName_A:
+    path: producer.agency_name
+    required: true
+  Producer_CustomerIdentifier_A:
+    path: producer.agency_customer_id
+  NamedInsured_FullName_A:
+    path: applicant.named_insured
+    required: true
+  Policy_EffectiveDate_A:
+    path: policy.effective_date
+    transform: date
+    validate: date
+    required: true
+  Policy_PolicyNumberIdentifier_A:
+    path: policy.policy_number
+
+  # --- Coverage trigger --------------------------------------------------
+  GeneralLiability_CoverageIndicator_A:
+    path: general_liability.commercial_general_liability
+    when: {is_true: true}
+  GeneralLiability_OccurrenceIndicator_A:
+    path: general_liability.coverage_trigger
+    when: {equals: Occurrence}
+  GeneralLiability_ClaimsMadeIndicator_A:
+    path: general_liability.coverage_trigger
+    when: {equals: Claims Made}
+
+  # --- Limits ------------------------------------------------------------
+  GeneralLiability_EachOccurrence_LimitAmount_A:
+    path: general_liability.limits.each_occurrence
+    transform: currency
+    validate: currency
+    required: true
+  GeneralLiability_GeneralAggregate_LimitAmount_A:
+    path: general_liability.limits.general_aggregate
+    transform: currency
+    validate: currency
+    required: true
+  GeneralLiability_ProductsAndCompletedOperations_AggregateLimitAmount_A:
+    path: general_liability.limits.products_completed_operations_aggregate
+    transform: currency
+    validate: currency
+  GeneralLiability_PersonalAndAdvertisingInjury_LimitAmount_A:
+    path: general_liability.limits.personal_and_advertising_injury
+    transform: currency
+  GeneralLiability_FireDamageRentedPremises_EachOccurrenceLimitAmount_A:
+    path: general_liability.limits.damage_to_rented_premises
+    transform: currency
+  GeneralLiability_MedicalExpense_EachPersonLimitAmount_A:
+    path: general_liability.limits.medical_expense
+    transform: currency
+  GeneralLiability_EmployeeBenefits_LimitAmount_A:
+    path: general_liability.limits.employee_benefits
+
+  GeneralLiability_GeneralAggregate_LimitAppliesPerPolicyIndicator_A:
+    path: general_liability.aggregate_applies_per
+    when: {equals: Policy}
+  GeneralLiability_GeneralAggregate_LimitAppliesPerProjectIndicator_A:
+    path: general_liability.aggregate_applies_per
+    when: {equals: Project}
+  GeneralLiability_GeneralAggregate_LimitAppliesPerLocationIndicator_A:
+    path: general_liability.aggregate_applies_per
+    when: {equals: Location}
+
+  # --- Deductibles --------------------------------------------------------
+  GeneralLiability_PropertyDamage_DeductibleIndicator_A:
+    path: general_liability.deductible.applies_to_property_damage
+    when: {is_true: true}
+  GeneralLiability_PropertyDamage_DeductibleAmount_A:
+    path: general_liability.deductible.property_damage_amount
+    transform: currency
+  GeneralLiability_BodilyInjury_DeductibleIndicator_A:
+    path: general_liability.deductible.applies_to_bodily_injury
+    when: {is_true: true}
+  GeneralLiability_BodilyInjury_DeductibleAmount_A:
+    path: general_liability.deductible.bodily_injury_amount
+    transform: currency
+  GeneralLiability_DeductiblePerOccurrenceIndicator_A:
+    path: general_liability.deductible.basis
+    when: {equals: Per Occurrence}
+  GeneralLiability_DeductiblePerClaimIndicator_A:
+    path: general_liability.deductible.basis
+    when: {equals: Per Claim}
+
+  # --- Premiums -----------------------------------------------------------
+  GeneralLiability_PremisesOperations_PremiumAmount_A:
+    path: general_liability.premiums.premises_operations
+    transform: currency
+  GeneralLiability_Products_PremiumAmount_A:
+    path: general_liability.premiums.products
+    transform: currency
+  GeneralLiabilityLineOfBusiness_TotalPremiumAmount_A:
+    path: general_liability.premiums.total
+    transform: currency
+  GeneralLiabilityLineOfBusiness_RemarkText_A:
+    path: general_liability.remarks
+
+  # --- Contractors supplemental -------------------------------------------
+  Contractors_WorkSubcontractedPercent_A:
+    path: general_liability.contractors.subcontracted_work_percent
+    transform: percent
+  Contractors_SubcontractorsPaidAmount_A:
+    path: general_liability.contractors.subcontractor_annual_cost
+    transform: currency
+  Contractors_FullTimeEmployeeCount_A:
+    path: business.full_time_employees
+    transform: number
+  Contractors_PartTimeEmployeeCount_A:
+    path: business.part_time_employees
+    transform: number
+  GeneralLiabilityLineOfBusiness_TypeOfWorkSubcontractedDescription_A:
+    path: general_liability.contractors.work_subcontracted_description
+    max_length: 120
+
+  # --- Employee benefits liability ----------------------------------------
+  GeneralLiability_EmployeeBenefits_EmployeeCount_A:
+    path: general_liability.employee_benefits.employee_count
+    transform: number
+
+repeaters:
+  # Schedule of hazards. Letter-indexed (_A/_B/_C), unlike the digit-indexed
+  # repeaters on the ACORD 125 pages.
+  hazards:
+    path: general_liability.classifications
+    indices: [A, B, C]
+    fields:
+      'GeneralLiability_Hazard_LocationProducerIdentifier_{i}':
+        item_path: location_number
+        transform: number
+      'GeneralLiability_Hazard_ClassCode_{i}':
+        item_path: class_code
+      'GeneralLiability_Hazard_Classification_{i}':
+        item_path: description
+        max_length: 120
+      'GeneralLiability_Hazard_PremiumBasisCode_{i}':
+        item_path: premium_basis_code
+      'GeneralLiability_Hazard_Exposure_{i}':
+        item_path: exposure
+        transform: currency
+      'GeneralLiability_Hazard_TerritoryCode_{i}':
+        item_path: territory

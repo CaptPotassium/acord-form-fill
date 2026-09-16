@@ -1,0 +1,793 @@
+{
+  "_comment": "Deliberately degraded account used to demonstrate the guardrails: missing required FEIN and NAICS, an unparseable effective date, a partial composite address, and more premises than the form holds.",
+  "account": {
+    "form_meta": {
+      "completion_date": "06/02/2026"
+    },
+    "producer": {
+      "agency_name": "Kestrel Risk Partners",
+      "producer_code": "KRP-0042",
+      "contact_name": "Marcus Alvarado",
+      "phone": "(203) 555-0900",
+      "email": "malvarado@kestrelrisk.com",
+      "agency_customer_id": "BRIGHT-0117"
+    },
+    "applicant": {
+      "named_insured": "Brightwater Mechanical Contractors, Inc.",
+      "dba": "Brightwater Mechanical",
+      "entity_type": "Corporation",
+      "website": "www.brightwatermech.com",
+      "business_phone": "(203) 555-0148",
+      "mailing_address": {
+        "street": "1420 Harbor Point Blvd, Suite 300",
+        "state": "CT",
+        "zip": "06902",
+        "county": "Fairfield"
+      }
+    },
+    "business": {
+      "sic": "1711",
+      "years_in_business": 18,
+      "annual_revenue": 14750000,
+      "full_time_employees": 62,
+      "part_time_employees": 8,
+      "operations_description": "Plumbing and HVAC contractor - commercial service and installation",
+      "date_business_started": "04/12/2008",
+      "nature_of_business": [
+        "Contractor",
+        "Service"
+      ]
+    },
+    "policy": {
+      "effective_date": "sometime in July",
+      "expiration_date": "07/01/2027",
+      "lines_requested": [
+        "General Liability"
+      ],
+      "billing_plan": "Agency Bill",
+      "payment_plan": "Annual",
+      "transaction_type": "Renew"
+    },
+    "premises": [
+      {
+        "location_number": 1,
+        "address": {
+          "street": "1420 Harbor Point Blvd, Suite 300",
+          "city": "Stamford",
+          "state": "CT",
+          "zip": "06902",
+          "county": "Fairfield"
+        },
+        "interest": "Tenant",
+        "total_building_area": 12000,
+        "occupied_area": 12000,
+        "full_time_employees": 24,
+        "part_time_employees": 3,
+        "description_of_operations": "Office and service dispatch"
+      },
+      {
+        "location_number": 2,
+        "address": {
+          "street": "88 Ironworks Road",
+          "city": "Bridgeport",
+          "state": "CT",
+          "zip": "06605",
+          "county": "Fairfield"
+        },
+        "interest": "Owner",
+        "total_building_area": 26500,
+        "occupied_area": 26500,
+        "full_time_employees": 38,
+        "part_time_employees": 5,
+        "annual_revenue": 9100000,
+        "description_of_operations": "Fabrication shop and equipment yard"
+      },
+      {
+        "location_number": 3,
+        "address": {
+          "street": "12 Dock St",
+          "city": "Norwalk",
+          "state": "CT",
+          "zip": "06854"
+        },
+        "interest": "Tenant",
+        "total_building_area": 4000
+      },
+      {
+        "location_number": 4,
+        "address": {
+          "street": "700 Mill Rd",
+          "city": "Danbury",
+          "state": "CT",
+          "zip": "06810"
+        },
+        "interest": "Owner",
+        "total_building_area": 9100
+      },
+      {
+        "location_number": 5,
+        "address": {
+          "street": "9 Quarry Ln",
+          "city": "Waterbury",
+          "state": "CT",
+          "zip": "06702"
+        },
+        "interest": "Owner",
+        "total_building_area": 15200
+      }
+    ],
+    "prior_carriers": [
+      {
+        "carrier_name": "Meridian Casualty Insurance Company",
+        "policy_number": "CGL-4471902-03",
+        "annual_premium": 47850,
+        "effective_date": "07/01/2025",
+        "expiration_date": "07/01/2026",
+        "line": "General Liability",
+        "year": "2025"
+      }
+    ],
+    "general_liability": {
+      "coverage_trigger": "Occurrence",
+      "aggregate_applies_per": "Project",
+      "limits": {
+        "each_occurrence": 1000000,
+        "damage_to_rented_premises": 100000,
+        "medical_expense": 10000,
+        "personal_and_advertising_injury": 1000000,
+        "general_aggregate": 2000000,
+        "products_completed_operations_aggregate": 2000000
+      },
+      "deductible": {
+        "applies_to_property_damage": true,
+        "property_damage_amount": 5000,
+        "applies_to_bodily_injury": true,
+        "bodily_injury_amount": 5000,
+        "basis": "Per Occurrence"
+      },
+      "classifications": [
+        {
+          "location_number": 1,
+          "description": "Plumbing - commercial/industrial",
+          "class_code": "98482",
+          "premium_basis": "Payroll",
+          "exposure": 2850000,
+          "premium_basis_code": "P"
+        },
+        {
+          "location_number": 1,
+          "description": "Heating/AC systems - installation, service, repair",
+          "class_code": "98677",
+          "premium_basis": "Payroll",
+          "exposure": 1240000,
+          "premium_basis_code": "P"
+        }
+      ],
+      "commercial_general_liability": true
+    },
+    "losses": [
+      {
+        "date_of_occurrence": "03/14/2024",
+        "claim_number": "GL-224-9911",
+        "description": "Water damage to tenant space during pipe replacement",
+        "amount_paid": 18400,
+        "amount_reserved": 0,
+        "line": "GL",
+        "date_of_claim": "03/20/2024",
+        "claim_open": false,
+        "subrogation": false
+      },
+      {
+        "date_of_occurrence": "11/02/2024",
+        "claim_number": "GL-224-1327",
+        "description": "Slip and fall, jobsite visitor, contusion",
+        "amount_paid": 6250,
+        "amount_reserved": 2500,
+        "line": "GL",
+        "date_of_claim": "11/08/2024",
+        "claim_open": true,
+        "subrogation": false
+      },
+      {
+        "date_of_occurrence": "08/19/2025",
+        "claim_number": "GL-225-4402",
+        "description": "Property damage - HVAC unit fell during install",
+        "amount_paid": 31900,
+        "amount_reserved": 15000,
+        "line": "GL",
+        "date_of_claim": "08/25/2025",
+        "claim_open": true,
+        "subrogation": true
+      }
+    ],
+    "general_information": {},
+    "loss_summary": {
+      "years_covered": 3,
+      "total_incurred": 74050
+    }
+  },
+  "provenance": {
+    "form_meta.completion_date": {
+      "source": "generated",
+      "page": null,
+      "confidence": "high"
+    },
+    "producer.agency_name": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "producer.producer_code": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "producer.contact_name": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "producer.phone": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "producer.email": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "applicant.named_insured": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.dba": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.fein": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.entity_type": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.website": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "applicant.business_phone": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "applicant.mailing_address.street": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.mailing_address.city": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.mailing_address.state": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.mailing_address.zip": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "applicant.mailing_address.county": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "medium",
+      "note": "county appeared in parentheses after the city line rather than a labelled field"
+    },
+    "business.naics": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "business.sic": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "business.years_in_business": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "business.annual_revenue": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "business.full_time_employees": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "business.part_time_employees": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "business.operations_description": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "low",
+      "note": "condensed from the carrier's business description line; the carrier wording may not match how the insured describes its own operations"
+    },
+    "policy.effective_date": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "medium",
+      "note": "renewal term taken from the AMS; the declarations page shows the expiring term"
+    },
+    "policy.expiration_date": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "medium"
+    },
+    "policy.lines_requested": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "medium",
+      "note": "inferred from the declarations page line of business; not an explicit request from the insured"
+    },
+    "policy.billing_plan": {
+      "source": "assumed_default",
+      "page": null,
+      "confidence": "low"
+    },
+    "policy.payment_plan": {
+      "source": "assumed_default",
+      "page": null,
+      "confidence": "low"
+    },
+    "premises.0.address.street": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.0.address.city": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.0.address.state": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.0.address.zip": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.0.interest": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.0.total_building_area": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.1.address.street": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.1.address.city": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.1.address.state": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.1.address.zip": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.1.interest": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.1.total_building_area": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "prior_carriers.0.carrier_name": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "prior_carriers.0.policy_number": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "prior_carriers.0.annual_premium": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.coverage_trigger": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "medium",
+      "note": "declarations page is a CGL occurrence form; trigger not stated explicitly"
+    },
+    "general_liability.aggregate_applies_per": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.limits.each_occurrence": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.limits.damage_to_rented_premises": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.limits.medical_expense": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.limits.personal_and_advertising_injury": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.limits.general_aggregate": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.limits.products_completed_operations_aggregate": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.0.location_number": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "low",
+      "note": "the classification schedule does not state which location each class applies to; defaulted to location 1"
+    },
+    "general_liability.classifications.0.description": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.0.class_code": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.0.premium_basis": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.0.exposure": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.1.location_number": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "low",
+      "note": "same defaulting caveat as the first classification row"
+    },
+    "general_liability.classifications.1.description": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.1.class_code": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.1.premium_basis": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.1.exposure": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.date_of_occurrence": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.description": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.amount_paid": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.amount_reserved": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.date_of_occurrence": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.description": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.amount_paid": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.amount_reserved": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.date_of_occurrence": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.description": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.amount_paid": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.amount_reserved": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "producer.agency_customer_id": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "high"
+    },
+    "policy.transaction_type": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "medium",
+      "note": "inferred from the presence of an expiring policy on the same account"
+    },
+    "business.date_business_started": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "derived from years_in_business; the AMS records a duration, not a date"
+    },
+    "business.nature_of_business": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "medium",
+      "note": "classified from the business description; the insured did not state this directly"
+    },
+    "loss_summary.years_covered": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "loss_summary.total_incurred": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "prior_carriers.0.year": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.commercial_general_liability": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "premises.0.occupied_area": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.0.full_time_employees": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.0.part_time_employees": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.0.description_of_operations": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.1.occupied_area": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.1.full_time_employees": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.1.part_time_employees": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.1.description_of_operations": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds company-level totals only"
+    },
+    "premises.1.annual_revenue": {
+      "source": "ams_export.csv",
+      "page": null,
+      "confidence": "low",
+      "note": "allocated across locations; the AMS holds a company-level figure only"
+    },
+    "losses.0.line": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.date_of_claim": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.claim_open": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.0.subrogation": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.line": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.date_of_claim": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.claim_open": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.1.subrogation": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.line": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.date_of_claim": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.claim_open": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "losses.2.subrogation": {
+      "source": "loss_runs.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.deductible.applies_to_property_damage": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.deductible.property_damage_amount": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.deductible.applies_to_bodily_injury": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.deductible.bodily_injury_amount": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "high"
+    },
+    "general_liability.classifications.0.premium_basis_code": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "medium",
+      "note": "mapped from the premium basis 'Payroll' to the form's (P) code"
+    },
+    "general_liability.classifications.1.premium_basis_code": {
+      "source": "dec_page.pdf",
+      "page": 1,
+      "confidence": "medium",
+      "note": "mapped from the premium basis 'Payroll' to the form's (P) code"
+    }
+  },
+  "conflicts": [
+    {
+      "path": "policy.effective_date",
+      "detail": "declarations page shows a term beginning 07/01/2025 (the expiring policy); AMS export shows 07/01/2026 (the renewal term). Used the AMS value on the assumption this is a renewal submission. Confirm with the account manager.",
+      "values": [
+        {
+          "value": "07/01/2025",
+          "source": "dec_page.pdf"
+        },
+        {
+          "value": "07/01/2026",
+          "source": "ams_export.csv"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,947 @@
+# ACORD 125/126/140 packet field inventory
+# 11 pages, 924 fillable fields
+
+
+## page 1  (89 fields)
+ACORD_AgencyCustomerID	text
+ACORD_AgencyName	text
+ACORD_CarrierName	text
+ACORD_CurrentDate	text
+ACORD_LOB_BusinessAuto	button  states=['/Off', '/On']
+ACORD_LOB_BusinessAuto_Premium	text
+ACORD_NAICCode	text
+ACORD_PolicyNumber	text
+ACORD_Policy_AgencyPlan	button  states=['/Off', '/On']
+ACORD_Policy_Audit	text
+ACORD_Policy_DepositAmount	text
+ACORD_Policy_DirectPlan	button  states=['/Off', '/On']
+ACORD_Policy_EffectiveDate	text
+ACORD_Policy_ExpirationDate	text
+ACORD_Policy_Insured1_FEINSSN	text
+ACORD_Policy_Insured1_GLCode	text
+ACORD_Policy_Insured1_MailingAddress	text
+ACORD_Policy_Insured1_NAICS	text
+ACORD_Policy_Insured1_Name	text
+ACORD_Policy_Insured1_PhoneNumber	text
+ACORD_Policy_Insured1_SIC	text
+ACORD_Policy_Insured1_Type_Corporation	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_Individual	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_JointVenture	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_LLC	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_NotForProfit	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_NumberofMembers	text
+ACORD_Policy_Insured1_Type_Partnership	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_SCorp	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Type_Trust	button  states=['/Off', '/On']
+ACORD_Policy_Insured1_Website	text
+ACORD_Policy_Insured2_FEINSSN	text
+ACORD_Policy_Insured2_GLCode	text
+ACORD_Policy_Insured2_MailingAddress	text
+ACORD_Policy_Insured2_NAICS	text
+ACORD_Policy_Insured2_Name	text
+ACORD_Policy_Insured2_PhoneNumber	text
+ACORD_Policy_Insured2_SIC	text
+ACORD_Policy_Insured2_Type_Corporation	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_Individual	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_JointVenture	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_LLC	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_NotForProfit	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_NumberOfMembers	text
+ACORD_Policy_Insured2_Type_Partnership	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_SCorp	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Type_Trust	button  states=['/Off', '/On']
+ACORD_Policy_Insured2_Website	text
+ACORD_Policy_Insured3_FEINSSN	text
+ACORD_Policy_Insured3_GLCode	text
+ACORD_Policy_Insured3_MailingAddress	text
+ACORD_Policy_Insured3_NAICS	text
+ACORD_Policy_Insured3_Name	text
+ACORD_Policy_Insured3_PhoneNumber	text
+ACORD_Policy_Insured3_SIC	text
+ACORD_Policy_Insured3_Type_Corporation	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_Individual	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_JointVenture	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_LLC	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_NotForProfit	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_NumberofMembers	text
+ACORD_Policy_Insured3_Type_Partnership	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_SCorp	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Type_Trust	button  states=['/Off', '/On']
+ACORD_Policy_Insured3_Website	text
+ACORD_Policy_MinimumPremium	text
+ACORD_Policy_PaymentMethod	text
+ACORD_Policy_PaymentPlan	text
+ACORD_Policy_PolicyPremium	text
+ACORD_ProducerCode	text
+ACORD_ProducerContact	text
+ACORD_ProducerEmailAddress	text
+ACORD_ProducerFaxNumber	text
+ACORD_ProducerPhoneNumber	text
+ACORD_ProducerSubCode	text
+ACORD_ProgramCode	text
+ACORD_ProgramName	text
+ACORD_Transaction_Bound	button  states=['/Off', '/On']
+ACORD_Transaction_Cancel	button  states=['/Off', '/On']
+ACORD_Transaction_Change	button  states=['/Off', '/On']
+ACORD_Transaction_Date	text
+ACORD_Transaction_IssuePolicy	button  states=['/Off', '/On']
+ACORD_Transaction_Quote	button  states=['/Off', '/On']
+ACORD_Transaction_Renew	button  states=['/Off', '/On']
+ACORD_Transaction_Time	text
+ACORD_Transaction_Time_AM	button  states=['/Off', '/On']
+ACORD_Transaction_Time_PM	button  states=['/Off', '/On']
+ACORD_Underwriter	text
+ACORD_UnderwriterOffice	text
+
+## page 2  (135 fields)
+ACORD_125_Interest_1_AdditionalInsured	button  states=['/Off', '/On']
+ACORD_125_Interest_1_Certificate	button  states=['/Off', '/On']
+ACORD_125_Interest_1_CoOwner	button  states=['/Off', '/On']
+ACORD_125_Interest_1_EmailAddress	text
+ACORD_125_Interest_1_EmpAsLessor	button  states=['/Off', '/On']
+ACORD_125_Interest_1_EndDate	text
+ACORD_125_Interest_1_FaxNumber	text
+ACORD_125_Interest_1_Leaseback	button  states=['/Off', '/On']
+ACORD_125_Interest_1_LienAmount	text
+ACORD_125_Interest_1_Lienholder	button
+ACORD_125_Interest_1_LossPayee	button  states=['/Off', '/On']
+ACORD_125_Interest_1_NameAddress	text
+ACORD_125_Interest_1_Other	button  states=['/Off', '/On']
+ACORD_125_Interest_1_OtherDesc	text
+ACORD_125_Interest_1_Owner	button  states=['/Off', '/On']
+ACORD_125_Interest_1_PhoneNumber	text
+ACORD_125_Interest_1_Policy	button  states=['/Off', '/On']
+ACORD_125_Interest_1_ReasonForInterest	text
+ACORD_125_Interest_1_ReferenceNumber	text
+ACORD_125_Interest_1_Registrant	button  states=['/Off', '/On']
+ACORD_125_Interest_1_SendBill	button  states=['/Off', '/On']
+ACORD_Contact1_Name	text
+ACORD_Contact1_PrimaryBusinessPhone	button  states=['/Off', '/On']
+ACORD_Contact1_PrimaryCellPhone	button  states=['/Off', '/On']
+ACORD_Contact1_PrimaryEmailAddress	text
+ACORD_Contact1_PrimaryHomePhone	button  states=['/Off', '/On']
+ACORD_Contact1_PrimaryPhoneNumber	text
+ACORD_Contact1_SecondaryBusinessPhone	button  states=['/Off', '/On']
+ACORD_Contact1_SecondaryCellPhone	button  states=['/Off', '/On']
+ACORD_Contact1_SecondaryEmailAddress	text
+ACORD_Contact1_SecondaryHomePhone	button  states=['/Off', '/On']
+ACORD_Contact1_SecondaryPhoneNumber	text
+ACORD_Contact1_Type	text
+ACORD_Contact2_Name	text
+ACORD_Contact2_PrimaryBusinessPhone	button  states=['/Off', '/On']
+ACORD_Contact2_PrimaryCellPhone	button  states=['/Off', '/On']
+ACORD_Contact2_PrimaryEmailAddress	text
+ACORD_Contact2_PrimaryHomePhone	button  states=['/Off', '/On']
+ACORD_Contact2_SecondaryBusinessPhone	button  states=['/Off', '/On']
+ACORD_Contact2_SecondaryCellPhone	button  states=['/Off', '/On']
+ACORD_Contact2_SecondaryEmailAddress	text
+ACORD_Contact2_SecondaryHomePhone	button  states=['/Off', '/On']
+ACORD_Contact2_Type	text
+ACORD_Location1_AnnualRevenue	text
+ACORD_Location1_BuildingArea	text
+ACORD_Location1_BuildingNumber	text
+ACORD_Location1_City	text
+ACORD_Location1_CityLimits_Inside	button  states=['/Off', '/On']
+ACORD_Location1_CityLimits_Outside	button  states=['/Off', '/On']
+ACORD_Location1_County	text
+ACORD_Location1_Description	text
+ACORD_Location1_Employees_FullTime	text
+ACORD_Location1_Employees_PartTime	text
+ACORD_Location1_Interest_Owner	button  states=['/Off', '/On']
+ACORD_Location1_Interest_Tenant	button  states=['/Off', '/On']
+ACORD_Location1_LeasedToOthers	text
+ACORD_Location1_LocationNumber	text
+ACORD_Location1_OccupiedArea	text
+ACORD_Location1_PublicArea	text
+ACORD_Location1_State	text
+ACORD_Location1_Street	text
+ACORD_Location1_ZIP	text
+ACORD_Location2_AnnualRevenue	text
+ACORD_Location2_BuildingArea	text
+ACORD_Location2_BuildingNumber	text
+ACORD_Location2_City	text
+ACORD_Location2_CityLimits_Inside	button  states=['/Off', '/On']
+ACORD_Location2_CityLimits_Outside	button  states=['/Off', '/On']
+ACORD_Location2_County	text
+ACORD_Location2_Description	text
+ACORD_Location2_Employees_FullTime	text
+ACORD_Location2_Employees_PartTime	text
+ACORD_Location2_Interest_Owner	button  states=['/Off', '/On']
+ACORD_Location2_Interest_Tenant	button  states=['/Off', '/On']
+ACORD_Location2_LeasedToOthers	text
+ACORD_Location2_LocationNumber	text
+ACORD_Location2_OccupiedArea	text
+ACORD_Location2_PublicArea	text
+ACORD_Location2_State	text
+ACORD_Location2_Street	text
+ACORD_Location2_ZIP	text
+ACORD_Location3_AnnualRevenue	text
+ACORD_Location3_BuildingArea	text
+ACORD_Location3_BuildingNumber	text
+ACORD_Location3_City	text
+ACORD_Location3_CityLimits_Inside	button  states=['/Off', '/On']
+ACORD_Location3_CityLimits_Outside	button  states=['/Off', '/On']
+ACORD_Location3_County	text
+ACORD_Location3_Description	text
+ACORD_Location3_Employees_FullTime	text
+ACORD_Location3_Employees_PartTime	text
+ACORD_Location3_Interest_Owner	button  states=['/Off', '/On']
+ACORD_Location3_Interest_Tenant	button  states=['/Off', '/On']
+ACORD_Location3_LeasedToOthers	text
+ACORD_Location3_LocationNumber	text
+ACORD_Location3_OccupiedArea	text
+ACORD_Location3_PublicArea	text
+ACORD_Location3_State	text
+ACORD_Location3_Street	text
+ACORD_Location3_ZIP	text
+ACORD_Location4_AnnualRevenue	text
+ACORD_Location4_BuildingArea	text
+ACORD_Location4_BuildingNumber	text
+ACORD_Location4_City	text
+ACORD_Location4_CityLimits_Inside	button  states=['/Off', '/On']
+ACORD_Location4_CityLimits_Outside	button  states=['/Off', '/On']
+ACORD_Location4_County	text
+ACORD_Location4_Description	text
+ACORD_Location4_Employees_FullTime	text
+ACORD_Location4_Employees_PartTime	text
+ACORD_Location4_Interest_Owner	button  states=['/Off', '/On']
+ACORD_Location4_Interest_Tenant	button  states=['/Off', '/On']
+ACORD_Location4_LeasedToOthers	text
+ACORD_Location4_LocationNumber	text
+ACORD_Location4_OccupiedArea	text
+ACORD_Location4_PublicArea	text
+ACORD_Location4_State	text
+ACORD_Location4_Street	text
+ACORD_Location4_ZIP	text
+ACORD_NatureOfBusiness_Apartments	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_Condominiums	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_Contractor	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_Description	text
+ACORD_NatureOfBusiness_InstallationPercentage	text
+ACORD_NatureOfBusiness_Institutional	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_Manufacturing	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_OffPremisesInstallation	text
+ACORD_NatureOfBusiness_Office	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_Restaurant	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_Retail	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_RetailPercentage	text
+ACORD_NatureOfBusiness_Service	button  states=['/Off', '/On']
+ACORD_NatureOfBusiness_StartDate	text
+ACORD_NatureOfBusiness_Wholesale	button  states=['/Off', '/On']
+ACORD_NatureOfOperations_OtherOperations	text
+
+## page 3  (80 fields)
+ACORD_General_CoverageTerminated	button  states=['/Off', '/On']
+ACORD_General_CoverageTerminated_AgentStopRepresenting	button  states=['/Off', '/On']
+ACORD_General_CoverageTerminated_ConditionCorrected	button  states=['/Off', '/On']
+ACORD_General_CoverageTerminated_ConditionCorrected_Description	text
+ACORD_General_CoverageTerminated_NonPayment	button  states=['/Off', '/On']
+ACORD_General_CoverageTerminated_NonRenewal	button  states=['/Off', '/On']
+ACORD_General_CoverageTerminated_Underwriting	button  states=['/Off', '/On']
+ACORD_General_Exposure	button  states=['/Off', '/On']
+ACORD_General_Exposure_Description	text
+ACORD_General_Foreign	button  states=['/Off', '/On']
+ACORD_General_HireDrones	button  states=['/Off', '/On']
+ACORD_General_HireDrones_Description	text
+ACORD_General_IndictedOrConvicted	button  states=['/Off', '/On']
+ACORD_General_IndictedOrConvicted_Description	text
+ACORD_General_JudgementLien	button  states=['/Off', '/On']
+ACORD_General_JudgementLien_1_Explanation	text
+ACORD_General_JudgementLien_1_OccurenceDate	text
+ACORD_General_JudgementLien_1_Resolution	text
+ACORD_General_JudgementLien_1_ResolutionDate	text
+ACORD_General_JudgementLien_2_Explanation	text
+ACORD_General_JudgementLien_2_OccurenceDate	text
+ACORD_General_JudgementLien_2_Resolution	text
+ACORD_General_JudgementLien_2_ResolutionDate	text
+ACORD_General_NegativeFinancialAction	button  states=['/Off', '/On']
+ACORD_General_NegativeFinancialAction_1_Explanation	text
+ACORD_General_NegativeFinancialAction_1_OccurenceDate	text
+ACORD_General_NegativeFinancialAction_1_Resolution	text
+ACORD_General_NegativeFinancialAction_1_ResolutionDate	text
+ACORD_General_NegativeFinancialAction_2_Explanation	text
+ACORD_General_NegativeFinancialAction_2_OccurenceDate	text
+ACORD_General_NegativeFinancialAction_2_Resolution	text
+ACORD_General_NegativeFinancialAction_2_ResolutionDate	text
+ACORD_General_OtherInsurance	button  states=['/Off', '/On']
+ACORD_General_OtherInsurance_1_LOB	text
+ACORD_General_OtherInsurance_1_PolicyNumber	text
+ACORD_General_OtherInsurance_2_LOB	text
+ACORD_General_OtherInsurance_2_PolicyNumber	text
+ACORD_General_OtherInsurance_3_LOB	text
+ACORD_General_OtherInsurance_3_PolicyNumber	text
+ACORD_General_OtherInsurance_4_LOB	text
+ACORD_General_OtherInsurance_4_PolicyNumber	text
+ACORD_General_OtherVentures	button  states=['/Off', '/On']
+ACORD_General_OtherVentures_Description	text
+ACORD_General_Parent	button  states=['/Off', '/On']
+ACORD_General_Parent_OwnershipPercentage	text
+ACORD_General_Parent_Relationship	text
+ACORD_General_Parent_SubsidaryName	text
+ACORD_General_PastAllegations	button  states=['/Off', '/On']
+ACORD_General_PastAllegations_Description	text
+ACORD_General_PossessDrones	button  states=['/Off', '/On']
+ACORD_General_PossessDrones_Description	text
+ACORD_General_Remarks	text
+ACORD_General_Safety	button  states=['/Off', '/On']
+ACORD_General_SafetyViolations	button  states=['/Off', '/On']
+ACORD_General_SafetyViolations_1_Explanation	text
+ACORD_General_SafetyViolations_1_OccurenceDate	text
+ACORD_General_SafetyViolations_1_Resolution	text
+ACORD_General_SafetyViolations_1_ResolutionDate	text
+ACORD_General_SafetyViolations_2_Explanation	text
+ACORD_General_SafetyViolations_2_OccurenceDate	text
+ACORD_General_SafetyViolations_2_Resolution	text
+ACORD_General_SafetyViolations_2_ResolutionDate	text
+ACORD_General_Safety_MonthlyMeetings	button  states=['/Off', '/On']
+ACORD_General_Safety_OSHA	button  states=['/Off', '/On']
+ACORD_General_Safety_Other	button  states=['/Off', '/On']
+ACORD_General_Safety_Other_Text	text
+ACORD_General_Safety_SafetyManual	button  states=['/Off', '/On']
+ACORD_General_Safety_SafetyPosition	button  states=['/Off', '/On']
+ACORD_General_Subsidiary	button  states=['/Off', '/On']
+ACORD_General_Subsidiary_OwnershipPercentage	text
+ACORD_General_Subsidiary_Parent	text
+ACORD_General_Subsidiary_Relationship	text
+ACORD_General_Trust	button  states=['/Off', '/On']
+ACORD_General_Trust_Name	text
+ACORD_PriorCarrier_1_AutoCarrier	text
+ACORD_PriorCarrier_1_AutoEffectiveDate	text
+ACORD_PriorCarrier_1_AutoExpirationDate	text
+ACORD_PriorCarrier_1_AutoPolicyNumber	text
+ACORD_PriorCarrier_1_AutoPremium	text
+ACORD_PriorCarrier_1_AutoYear	text
+
+## page 4  (45 fields)
+ACORD_LossHistory_1_AmountPaid	text
+ACORD_LossHistory_1_AmountReserved	text
+ACORD_LossHistory_1_ClaimOpen	text
+ACORD_LossHistory_1_DateOfClaim	text
+ACORD_LossHistory_1_Description	text
+ACORD_LossHistory_1_LOB	text
+ACORD_LossHistory_1_OccurenceDate	text
+ACORD_LossHistory_1_Subrogation	text
+ACORD_LossHistory_2_AmountPaid	text
+ACORD_LossHistory_2_AmountReserved	text
+ACORD_LossHistory_2_ClaimOpen	text
+ACORD_LossHistory_2_DateOfClaim	text
+ACORD_LossHistory_2_Description	text
+ACORD_LossHistory_2_LOB	text
+ACORD_LossHistory_2_OccurenceDate	text
+ACORD_LossHistory_2_Subrogation	text
+ACORD_LossHistory_3_AmountPaid	text
+ACORD_LossHistory_3_AmountReserved	text
+ACORD_LossHistory_3_ClaimOpen	text
+ACORD_LossHistory_3_DateOfClaim	text
+ACORD_LossHistory_3_Description	text
+ACORD_LossHistory_3_OccurenceDate	text
+ACORD_LossHistory_3_Subrogation	text
+ACORD_LossHistory_None	button  states=['/Off', '/On']
+ACORD_LossHistory_NumberOfYears	text
+ACORD_LossHistory_TotalLosses	text
+ACORD_PriorCarrier_2_AutoCarrier	text
+ACORD_PriorCarrier_2_AutoEffectiveDate	text
+ACORD_PriorCarrier_2_AutoExpirationDate	text
+ACORD_PriorCarrier_2_AutoPolicyNumber	text
+ACORD_PriorCarrier_2_AutoPremium	text
+ACORD_PriorCarrier_2_AutoYear	text
+ACORD_PriorCarrier_3_AutoCarrier	text
+ACORD_PriorCarrier_3_AutoEffectiveDate	text
+ACORD_PriorCarrier_3_AutoExpirationDate	text
+ACORD_PriorCarrier_3_AutoPolicyNumber	text
+ACORD_PriorCarrier_3_AutoPremium	text
+ACORD_PriorCarrier_3_AutoYear	text
+ACORD_Signatures_Applicant_Date	text
+ACORD_Signatures_Applicant_Initials	text
+ACORD_Signatures_Applicant_Signature	text
+ACORD_Signatures_Producer_LicenseNumber	text
+ACORD_Signatures_Producer_Name	text
+ACORD_Signatures_Producer_NationalNumber	text
+ACORD_Signatures_Producer_Signature	text
+
+## page 5  (90 fields)
+Form_CompletionDate_A	text
+Form_EditionIdentifier_A	text
+GeneralLiabilityLineOfBusiness_AnyProductWorkAccidentLocationExcludedUninsuredPreviousCoverageExplanation_A	text
+GeneralLiabilityLineOfBusiness_Question_AAHCode_A	text
+GeneralLiabilityLineOfBusiness_Question_AAICode_A	text
+GeneralLiabilityLineOfBusiness_RemarkText_A	text
+GeneralLiabilityLineOfBusiness_TailCoveragePurchasedPreviousPolicyExplanation_A	text
+GeneralLiabilityLineOfBusiness_TotalPremiumAmount_A	text
+GeneralLiability_BodilyInjury_DeductibleAmount_A	text
+GeneralLiability_BodilyInjury_DeductibleIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_ClaimsMadeIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_ClaimsMade_ProposedRetroactiveDate_A	text
+GeneralLiability_ClaimsMade_UninterruptedCoverageEntryDate_A	text
+GeneralLiability_CoverageIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_DeductiblePerClaimIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_DeductiblePerOccurrenceIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_EachOccurrence_LimitAmount_A	text
+GeneralLiability_EmployeeBenefits_EmployeeCount_A	text
+GeneralLiability_EmployeeBenefits_EmployeeCoveredCount_A	text
+GeneralLiability_EmployeeBenefits_LimitAmount_A	text
+GeneralLiability_EmployeeBenefits_PerClaimDeductibleAmount_A	text
+GeneralLiability_EmployeeBenefits_RetroactiveDate_A	text
+GeneralLiability_FireDamageRentedPremises_EachOccurrenceLimitAmount_A	text
+GeneralLiability_GeneralAggregate_LimitAmount_A	text
+GeneralLiability_GeneralAggregate_LimitAppliesPerLocationIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_GeneralAggregate_LimitAppliesPerPolicyIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_GeneralAggregate_LimitAppliesPerProjectIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_GeneralAggregate_LimitAppliesToCode_A	text
+GeneralLiability_GeneralAggregate_LimitAppliesToOtherIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_Hazard_ClassCode_A	text
+GeneralLiability_Hazard_ClassCode_B	text
+GeneralLiability_Hazard_ClassCode_C	text
+GeneralLiability_Hazard_Classification_A	text
+GeneralLiability_Hazard_Classification_B	text
+GeneralLiability_Hazard_Classification_C	text
+GeneralLiability_Hazard_Exposure_A	text
+GeneralLiability_Hazard_Exposure_B	text
+GeneralLiability_Hazard_Exposure_C	text
+GeneralLiability_Hazard_HazardProducerIdentifier_A	text
+GeneralLiability_Hazard_HazardProducerIdentifier_B	text
+GeneralLiability_Hazard_HazardProducerIdentifier_C	text
+GeneralLiability_Hazard_LocationProducerIdentifier_A	text
+GeneralLiability_Hazard_LocationProducerIdentifier_B	text
+GeneralLiability_Hazard_LocationProducerIdentifier_C	text
+GeneralLiability_Hazard_PremisesOperationsPremiumAmount_A	text
+GeneralLiability_Hazard_PremisesOperationsPremiumAmount_B	text
+GeneralLiability_Hazard_PremisesOperationsPremiumAmount_C	text
+GeneralLiability_Hazard_PremisesOperationsRate_A	text
+GeneralLiability_Hazard_PremisesOperationsRate_B	text
+GeneralLiability_Hazard_PremisesOperationsRate_C	text
+GeneralLiability_Hazard_PremiumBasisCode_A	text
+GeneralLiability_Hazard_PremiumBasisCode_B	text
+GeneralLiability_Hazard_PremiumBasisCode_C	text
+GeneralLiability_Hazard_ProductsPremiumAmount_A	text
+GeneralLiability_Hazard_ProductsPremiumAmount_B	text
+GeneralLiability_Hazard_ProductsPremiumAmount_C	text
+GeneralLiability_Hazard_ProductsRate_A	text
+GeneralLiability_Hazard_ProductsRate_B	text
+GeneralLiability_Hazard_ProductsRate_C	text
+GeneralLiability_Hazard_TerritoryCode_A	text
+GeneralLiability_Hazard_TerritoryCode_B	text
+GeneralLiability_Hazard_TerritoryCode_C	text
+GeneralLiability_MedicalExpense_EachPersonLimitAmount_A	text
+GeneralLiability_MedicalPayments_CoverageAvailableIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_MedicalPayments_CoverageAvailableNoIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_OccurrenceIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_OtherCoverageDescription_A	text
+GeneralLiability_OtherCoverageIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_OtherCoverageLimitAmount_A	text
+GeneralLiability_OtherCoverageLimitDescription_A	text
+GeneralLiability_OtherCoveragePremiumAmount_A	text
+GeneralLiability_OtherDeductibleAmount_A	text
+GeneralLiability_OtherDeductibleDescription_A	text
+GeneralLiability_OtherDeductibleIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_OwnersAndContractorsProtectiveIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_PersonalAndAdvertisingInjury_LimitAmount_A	text
+GeneralLiability_PremisesOperations_PremiumAmount_A	text
+GeneralLiability_ProductsAndCompletedOperations_AggregateLimitAmount_A	text
+GeneralLiability_Products_PremiumAmount_A	text
+GeneralLiability_PropertyDamage_DeductibleAmount_A	text
+GeneralLiability_PropertyDamage_DeductibleIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_UninsuredUnderinsuredMotorists_CoverageAvailableIndicator_A	button  states=['/1', '/Off']
+GeneralLiability_UninsuredUnderinsuredMotorists_CoverageAvailableNoIndicator_A	button  states=['/1', '/Off']
+Insurer_FullName_A	text
+Insurer_NAICCode_A	text
+NamedInsured_FullName_A	text
+Policy_EffectiveDate_A	text
+Policy_PolicyNumberIdentifier_A	text
+Producer_CustomerIdentifier_A	text
+Producer_FullName_A	text
+
+## page 6  (57 fields)
+Contractors_FullTimeEmployeeCount_A	text
+Contractors_PartTimeEmployeeCount_A	text
+Contractors_Question_AABCode_A	text
+Contractors_Question_AACCode_A	text
+Contractors_Question_AADCode_A	text
+Contractors_Question_AAECode_A	text
+Contractors_Question_AAICode_A	text
+Contractors_Question_ABBCode_A	text
+Contractors_SubcontractorsPaidAmount_A	text
+Contractors_WorkSubcontractedPercent_A	text
+GeneralLiabilityLineOfBusiness_ApplicantDrawPlansForOthersExplanation_A	text
+GeneralLiabilityLineOfBusiness_ApplicantInstallServiceProductsExplanation_A	text
+GeneralLiabilityLineOfBusiness_ApplicantLeaseEquipmentToOthersExplanation_A	text
+GeneralLiabilityLineOfBusiness_GuaranteesWarrantiesHoldHarmlessExplanation_A	text
+GeneralLiabilityLineOfBusiness_NamedInsuredSellToOtherNamedInsuredExplanation_R	text
+GeneralLiabilityLineOfBusiness_OperationsIncludeBlastingExplanation_A	text
+GeneralLiabilityLineOfBusiness_OperationsIncludeEvacuationExplanation_A	text
+GeneralLiabilityLineOfBusiness_ProductsOfOthersSoldUnderApplicantLabelExplanation_A	text
+GeneralLiabilityLineOfBusiness_ProductsRecalledDiscontinuedExplanation_A	text
+GeneralLiabilityLineOfBusiness_ProductsRelatedToAircraftIndustryExplanation_A	text
+GeneralLiabilityLineOfBusiness_ProductsUnderLabelOfOthersExplanation_A	text
+GeneralLiabilityLineOfBusiness_Question_AAJCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABACode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABBCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABCCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABDCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABECode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABFCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABGCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABHCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ABICode_A	text
+GeneralLiabilityLineOfBusiness_ResearchDevelopmentConductedNewProductsPlannedExplanation_A	text
+GeneralLiabilityLineOfBusiness_SubcontractorsCarryLowerLimitsExplanation_A	text
+GeneralLiabilityLineOfBusiness_SubcontractorsWorksWithoutCertificatesOfInsuranceExplanation_A	text
+GeneralLiabilityLineOfBusiness_TypeOfWorkSubcontractedDescription_A	text
+GeneralLiabilityLineOfBusiness_VendorCoverageRequiredExplanation_A	text
+ProductAndCompletedOperations_AnnualGrossSalesAmount_A	text
+ProductAndCompletedOperations_AnnualGrossSalesAmount_B	text
+ProductAndCompletedOperations_AnnualGrossSalesAmount_C	text
+ProductAndCompletedOperations_ExpectedLifeMonthCount_A	text
+ProductAndCompletedOperations_ExpectedLifeMonthCount_B	text
+ProductAndCompletedOperations_ExpectedLifeMonthCount_C	text
+ProductAndCompletedOperations_InMarketMonthCount_A	text
+ProductAndCompletedOperations_InMarketMonthCount_B	text
+ProductAndCompletedOperations_InMarketMonthCount_C	text
+ProductAndCompletedOperations_IntendedUse_A	text
+ProductAndCompletedOperations_IntendedUse_B	text
+ProductAndCompletedOperations_IntendedUse_C	text
+ProductAndCompletedOperations_PrincipalComponents_A	text
+ProductAndCompletedOperations_PrincipalComponents_B	text
+ProductAndCompletedOperations_PrincipalComponents_C	text
+ProductAndCompletedOperations_ProductName_A	text
+ProductAndCompletedOperations_ProductName_B	text
+ProductAndCompletedOperations_ProductName_C	text
+ProductAndCompletedOperations_UnitCount_A	text
+ProductAndCompletedOperations_UnitCount_B	text
+ProductAndCompletedOperations_UnitCount_C	text
+
+## page 7  (80 fields)
+AdditionalInterest_AccountNumberIdentifier_A	text
+AdditionalInterest_CertificateRequiredIndicator_A	button
+AdditionalInterest_FullName_A	text
+AdditionalInterest_InterestRank_A	text
+AdditionalInterest_Interest_AdditionalInsuredIndicator_A	button  states=['/1', '/Off']
+AdditionalInterest_Interest_EmployeeAsLessorIndicator_A	button  states=['/1', '/Off']
+AdditionalInterest_Interest_LendersLossPayableIndicator_A	button
+AdditionalInterest_Interest_LienholderIndicator_A	button  states=['/1', '/Off']
+AdditionalInterest_Interest_LossPayeeIndicator_A	button
+AdditionalInterest_Interest_MortgageeIndicator_A	button
+AdditionalInterest_Interest_OtherDescription_A	text
+AdditionalInterest_Interest_OtherIndicator_A	button
+AdditionalInterest_ItemDescription_A	text
+AdditionalInterest_Item_BuildingProducerIdentifier_A	text
+AdditionalInterest_Item_LocationProducerIdentifier_A	text
+AdditionalInterest_Item_ScheduledItemClassCode_A	text
+AdditionalInterest_Item_ScheduledItemProducerIdentifier_A	text
+AdditionalInterest_MailingAddress_CityName_A	text
+AdditionalInterest_MailingAddress_CountryCode_A	text
+AdditionalInterest_MailingAddress_LineOne_A	text
+AdditionalInterest_MailingAddress_LineTwo_A	text
+AdditionalInterest_MailingAddress_PostalCode_A	text
+AdditionalInterest_MailingAddress_StateOrProvinceCode_A	text
+AthleticTeam_AgeGroup_OverEighteenIndicator_A	button  states=['/1', '/Off']
+AthleticTeam_AgeGroup_OverEighteenIndicator_B	button  states=['/1', '/Off']
+AthleticTeam_AgeGroup_ThirteenThroughEighteenIndicator_A	button  states=['/1', '/Off']
+AthleticTeam_AgeGroup_ThirteenThroughEighteenIndicator_B	button  states=['/1', '/Off']
+AthleticTeam_AgeGroup_TwelveAndUnderIndicator_A	button  states=['/1', '/Off']
+AthleticTeam_AgeGroup_TwelveAndUnderIndicator_B	button  states=['/1', '/Off']
+AthleticTeam_ContactSportCode_A	text
+AthleticTeam_ContactSportCode_B	text
+AthleticTeam_SponsorshipExtentDescription_A	text
+AthleticTeam_SponsorshipExtentDescription_B	text
+AthleticTeam_SportDescription_A	text
+AthleticTeam_SportDescription_B	text
+BuildingOccupancy_ApartmentArea_A	text
+BuildingOccupancy_ApartmentCount_A	text
+CommercialInlandMarineProperty_PropertySubClass_LargeEquipmentIndicator_A	button  states=['/1', '/Off']
+CommercialInlandMarineProperty_PropertySubClass_LargeEquipmentIndicator_B	button  states=['/1', '/Off']
+CommercialInlandMarineProperty_PropertySubClass_SmallToolsIndicator_A	button  states=['/1', '/Off']
+CommercialInlandMarineProperty_PropertySubClass_SmallToolsIndicator_B	button  states=['/1', '/Off']
+Contractors_Question_AAHCode_A	text
+GeneralLiabilityLineOfBusiness_AnyExposureRadioactiveMaterialsExplanation_A	text
+GeneralLiabilityLineOfBusiness_AnyListedOperationsSoldAcquiredLastFiveYearsExplanation_A	text
+GeneralLiabilityLineOfBusiness_AnyMedicalFacilitiesProvidedMedicalProfessionalsEmployedExplanation_A	text
+GeneralLiabilityLineOfBusiness_AnyParkingFacilitiesOwnedRentedExplanation_A	text
+GeneralLiabilityLineOfBusiness_Attachment_AdditionalInterestIndicator_A	button
+GeneralLiabilityLineOfBusiness_DemolitionExposureContemplatedExplanation_A	text
+GeneralLiabilityLineOfBusiness_FeeChargedForParkingExplanation_A	text
+GeneralLiabilityLineOfBusiness_MachineryOrEquipmentLoanedRentedOthersExplanation_A	text
+GeneralLiabilityLineOfBusiness_MachineryOrEquipmentLoanedRentedOthersExplanation_B	text
+GeneralLiabilityLineOfBusiness_OperationsInvolveStoringDisposingTransportingHazardousMaterialExplanation_A	text
+GeneralLiabilityLineOfBusiness_Question_ABJCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACACode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACBCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACCCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACDCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACECode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACFCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACGCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACHCode_A	text
+GeneralLiabilityLineOfBusiness_Question_ACJCode_A	text
+GeneralLiabilityLineOfBusiness_Question_KAACode_A	text
+GeneralLiabilityLineOfBusiness_Question_KABCode_A	text
+GeneralLiabilityLineOfBusiness_Question_KAGCode_A	text
+GeneralLiabilityLineOfBusiness_Question_KAHCode_A	text
+GeneralLiabilityLineOfBusiness_RecreationalFacilitiesProvidedExplanation_A	text
+GeneralLiabilityLineOfBusiness_SportingOrSocialEventsSponsoredExplanation_A	text
+GeneralLiabilityLineOfBusiness_StructuralAlterationsContemplatedExplanation_A	text
+GeneralLiabilityLineOfBusiness_WatercraftDocksFloatsOwnedHiredLeasedExplanation_A	text
+GeneralLiability_Otherlodgingoperationsdescription_A	text
+PropertyItem_ItemDetail_InstructionGivenCode_A	text
+PropertyItem_ItemDetail_InstructionGivenCode_B	text
+SwimmingPool_AboveGroundIndicator_A	button  states=['/1', '/Off']
+SwimmingPool_ApprovedFenceIndicator_A	button  states=['/1', '/Off']
+SwimmingPool_DivingBoardIndicator_A	button  states=['/1', '/Off']
+SwimmingPool_InGroundIndicator_A	button  states=['/1', '/Off']
+SwimmingPool_LifeGuardIndicator_A	button  states=['/1', '/Off']
+SwimmingPool_LimitedAccessIndicator_A	button  states=['/1', '/Off']
+SwimmingPool_SlideIndicator_A	button  states=['/1', '/Off']
+
+## page 8  (28 fields)
+AdditionalInterest_FullName_B	text
+AdditionalInterest_FullName_C	text
+AdditionalInterest_FullName_D	text
+AdditionalInterest_FullName_E	text
+AdditionalInterest_WorkersCompensationCarriedCode_A	text
+AdditionalInterest_WorkersCompensationCarriedCode_B	text
+AdditionalInterest_WorkersCompensationCarriedCode_C	text
+AdditionalInterest_WorkersCompensationCarriedCode_D	text
+Contractors_Question_AAGCode_A	text
+GeneralLiabilityLineOfBusiness_ApplicantActiveJointVenturesExplanation_A	text
+GeneralLiabilityLineOfBusiness_BusinessPromotionalLiteratureSafetyRepresentationsExplanation_A	text
+GeneralLiabilityLineOfBusiness_CrimesOccurredOrAttemptedLastThreeYearsExplanation_A	text
+GeneralLiabilityLineOfBusiness_DayCareFacilitiesOperatedExplanation_A	text
+GeneralLiabilityLineOfBusiness_FormalSafetySecurityPolicyInEffectExplanation_A	text
+GeneralLiabilityLineOfBusiness_LabourInterchangeOtherBusinessSubsidiariesExplanation_A	text
+GeneralLiabilityLineOfBusiness_Question_AABCode_A	text
+GeneralLiabilityLineOfBusiness_Question_AACCode_A	text
+GeneralLiabilityLineOfBusiness_Question_AADCode_A	text
+GeneralLiabilityLineOfBusiness_Question_AAECode_A	text
+GeneralLiabilityLineOfBusiness_Question_AAFCode_A	text
+GeneralLiabilityLineOfBusiness_Question_AAGCode_A	text
+GeneralLiabilityLineOfBusiness_RemarkText_B	text
+NamedInsured_SignatureDate_A	text
+NamedInsured_Signature_A	text
+Producer_AuthorizedRepresentative_FullName_A	text
+Producer_AuthorizedRepresentative_Signature_A	text
+Producer_NationalIdentifier_A	text
+Producer_StateLicenseIdentifier_A	text
+
+## page 9  (156 fields)
+AdditionalInterest_Item_OtherItemDescription_A	text
+Alarm_Burglar_AlarmDescription_A	text
+Alarm_Burglar_CentralStationIndicator_A	button  states=['/1', '/Off']
+Alarm_Burglar_CertificateExpirationDate_A	text
+Alarm_Burglar_CertificateIdentifier_A	text
+Alarm_Burglar_GradeCode_A	text
+Alarm_Burglar_InstalledAndServicedByName_A	text
+Alarm_Burglar_ProtectionExtentCode_A	text
+Alarm_Burglar_WithKeysIndicator_A	button  states=['/1', '/Off']
+BuildingExposure_FrontDescription_A	text
+BuildingExposure_FrontDistance_A	text
+BuildingExposure_LeftDescription_A	text
+BuildingExposure_LeftDistance_A	text
+BuildingExposure_RearDescription_A	text
+BuildingExposure_RearDistance_A	text
+BuildingExposure_RightDescription_A	text
+BuildingExposure_RightDistance_A	text
+BuildingFeatures_HistoricalPropertyIndicator_A	button  states=['/1', '/Off']
+BuildingFeatures_SolidFuelHeaterIndicator_A	button  states=['/1', '/Off']
+BuildingFeatures_SolidFuelHeaterInstallationDate_A	text
+BuildingFeatures_SolidFuelHeaterManufacturerName_A	text
+BuildingFireProtection_Alarm_CentralStationIndicator_A	button  states=['/1', '/Off']
+BuildingFireProtection_Alarm_LocalGongIndicator_A	button  states=['/1', '/Off']
+BuildingFireProtection_Alarm_ManufacturerName_A	text
+BuildingFireProtection_Alarm_ProtectionDescription_A	text
+BuildingFireProtection_Alarm_SprinklerPercent_A	text
+BuildingFireProtection_FireDistrictCode_A	text
+BuildingFireProtection_FireDistrictName_A	text
+BuildingFireProtection_FireStationDistanceMileCount_A	text
+BuildingFireProtection_HydrantDistanceFeetCount_A	text
+BuildingFireProtection_ProtectionClassCode_A	text
+BuildingImprovement_HeatingIndicator_A	button  states=['/1', '/Off']
+BuildingImprovement_HeatingYear_A	text
+BuildingImprovement_OtherDescription_A	text
+BuildingImprovement_OtherIndicator_A	button  states=['/1', '/Off']
+BuildingImprovement_OtherYear_A	text
+BuildingImprovement_PlumbingIndicator_A	button  states=['/1', '/Off']
+BuildingImprovement_PlumbingYear_A	text
+BuildingImprovement_RoofingIndicator_A	button  states=['/1', '/Off']
+BuildingImprovement_RoofingYear_A	text
+BuildingImprovement_WiringIndicator_A	button  states=['/1', '/Off']
+BuildingImprovement_WiringYear_A	text
+BuildingOccupancy_OtherOccupanciesDescription_A	text
+BuildingSecurity_GuardWatchmenClockHourlyIndicator_A	button  states=['/1', '/Off']
+BuildingSecurity_GuardWatchmenCount_A	text
+BuildingSecurity_GuardWatchmenOtherDescription_A	text
+BuildingSecurity_GuardWatchmenOtherIndicator_A	button  states=['/1', '/Off']
+Burglar_LocalGongIndicator_A	button  states=['/1', '/Off']
+CommercialCoverage_Summary_BlanketTypeDescription_A	text
+CommercialCoverage_Summary_BlanketTypeDescription_B	text
+CommercialCoverage_Summary_BlanketTypeDescription_C	text
+CommercialCoverage_Summary_BlanketTypeDescription_D	text
+CommercialPropertyCoverage_MineSubsidenceOption_NoIndicator_A	button  states=['/1', '/Off']
+CommercialPropertyCoverage_MineSubsidence_LimitAmount_A	text
+CommercialPropertyCoverage_MineSubsidence_YesIndicator_A	button  states=['/1', '/Off']
+CommercialPropertyCoverage_SinkHoleCollapse_LimitAmount_A	text
+CommercialPropertyCoverage_SinkHoleCollapse_NoIndicator_A	button  states=['/1', '/Off']
+CommercialPropertyCoverage_SinkHoleCollapse_YesIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Attachment_BusinessIncomeExtraExpenseIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Attachment_ValueReportingIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Premises_BlanketNumber_A	text
+CommercialProperty_Premises_BlanketNumber_B	text
+CommercialProperty_Premises_BlanketNumber_C	text
+CommercialProperty_Premises_BlanketNumber_D	text
+CommercialProperty_Premises_BlanketNumber_E	text
+CommercialProperty_Premises_BreakdownOrContaminationIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Premises_CauseOfLossCode_A	text
+CommercialProperty_Premises_CauseOfLossCode_B	text
+CommercialProperty_Premises_CauseOfLossCode_C	text
+CommercialProperty_Premises_CauseOfLossCode_D	text
+CommercialProperty_Premises_CauseOfLossCode_E	text
+CommercialProperty_Premises_CoinsurancePercent_A	text
+CommercialProperty_Premises_CoinsurancePercent_B	text
+CommercialProperty_Premises_CoinsurancePercent_C	text
+CommercialProperty_Premises_CoinsurancePercent_D	text
+CommercialProperty_Premises_CoinsurancePercent_E	text
+CommercialProperty_Premises_DeductibleAmount_A	text
+CommercialProperty_Premises_DeductibleAmount_B	text
+CommercialProperty_Premises_DeductibleAmount_C	text
+CommercialProperty_Premises_DeductibleAmount_D	text
+CommercialProperty_Premises_DeductibleAmount_E	text
+CommercialProperty_Premises_DeductibleTypeCode_A	text
+CommercialProperty_Premises_DeductibleTypeCode_B	text
+CommercialProperty_Premises_DeductibleTypeCode_C	text
+CommercialProperty_Premises_DeductibleTypeCode_D	text
+CommercialProperty_Premises_DeductibleTypeCode_E	text
+CommercialProperty_Premises_FormsAndConditions_A	text
+CommercialProperty_Premises_FormsAndConditions_B	text
+CommercialProperty_Premises_FormsAndConditions_C	text
+CommercialProperty_Premises_FormsAndConditions_D	text
+CommercialProperty_Premises_FormsAndConditions_E	text
+CommercialProperty_Premises_InflationGuardPercent_A	text
+CommercialProperty_Premises_InflationGuardPercent_B	text
+CommercialProperty_Premises_InflationGuardPercent_C	text
+CommercialProperty_Premises_InflationGuardPercent_D	text
+CommercialProperty_Premises_InflationGuardPercent_E	text
+CommercialProperty_Premises_LimitAmount_A	text
+CommercialProperty_Premises_LimitAmount_B	text
+CommercialProperty_Premises_LimitAmount_C	text
+CommercialProperty_Premises_LimitAmount_D	text
+CommercialProperty_Premises_LimitAmount_E	text
+CommercialProperty_Premises_OptionsDescription_A	text
+CommercialProperty_Premises_OtherIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Premises_PowerOutageIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Premises_RemarkText_A	text
+CommercialProperty_Premises_SellingPriceIndicator_A	button  states=['/1', '/Off']
+CommercialProperty_Premises_SubjectOfInsuranceCode_A	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_B	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_C	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_D	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_E	text
+CommercialProperty_Premises_ValuationCode_A	text
+CommercialProperty_Premises_ValuationCode_B	text
+CommercialProperty_Premises_ValuationCode_C	text
+CommercialProperty_Premises_ValuationCode_D	text
+CommercialProperty_Premises_ValuationCode_E	text
+CommercialProperty_Spoilage_DeductibleAmount_A	text
+CommercialProperty_Spoilage_LimitAmount_A	text
+CommercialProperty_Spoilage_PropertyDescription_A	text
+CommercialProperty_Spoilage_RefrigeratorMaintenanceCode_A	text
+CommercialProperty_Spoilage_YesNoCode_A	text
+CommercialProperty_Summary_BlanketLimitAmount_A	text
+CommercialProperty_Summary_BlanketLimitAmount_B	text
+CommercialProperty_Summary_BlanketLimitAmount_C	text
+CommercialProperty_Summary_BlanketLimitAmount_D	text
+CommercialProperty_Summary_BlanketNumberIdentifier_A	text
+CommercialProperty_Summary_BlanketNumberIdentifier_B	text
+CommercialProperty_Summary_BlanketNumberIdentifier_C	text
+CommercialProperty_Summary_BlanketNumberIdentifier_D	text
+CommercialStructure_Building_ProducerIdentifier_A	text
+CommercialStructure_Building_SublocationDescription_A	text
+CommercialStructure_BuiltYear_A	text
+CommercialStructure_HeatingBoilerInsuredElsewhereCode_A	text
+CommercialStructure_HeatingBoilerInsuredElsewhereCode_B	text
+CommercialStructure_Location_ProducerIdentifier_A	text
+CommercialStructure_PhysicalAddress_LineOne_A	text
+CommercialStructure_PrimaryHeat_BoilerIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_PrimaryHeat_OtherDescription_A	text
+CommercialStructure_PrimaryHeat_OtherIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_PrimaryHeat_SolidFuelIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_SecondaryHeat_BoilerIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_SecondaryHeat_OtherDescription_A	text
+CommercialStructure_SecondaryHeat_OtherIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_SecondaryHeat_SolidFuelIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_TaxCode_A	text
+CommercialStructure_WindClass_OtherDescription_A	text
+CommercialStructure_WindClass_OtherIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_WindClass_ResistiveIndicator_A	button  states=['/1', '/Off']
+CommercialStructure_WindClass_SemiResistiveIndicator_A	button  states=['/1', '/Off']
+Construction_BasementCount_A	text
+Construction_BuildingArea_A	text
+Construction_BuildingCodeEffectivenessGradeCode_A	text
+Construction_ConstructionCode_A	text
+Construction_OpenSidesCount_A	text
+Construction_RoofMaterialCode_A	text
+Construction_StoreyCount_A	text
+
+## page 10  (164 fields)
+AdditionalInterest_AccountNumberIdentifier_B	text
+AdditionalInterest_CertificateRequiredIndicator_B	button  states=['/1', '/Off']
+AdditionalInterest_InterestRank_B	text
+AdditionalInterest_Interest_LendersLossPayableIndicator_B	button  states=['/1', '/Off']
+AdditionalInterest_Interest_LossPayeeIndicator_B	button  states=['/1', '/Off']
+AdditionalInterest_Interest_MortgageeIndicator_B	button  states=['/1', '/Off']
+AdditionalInterest_Interest_OtherDescription_B	text
+AdditionalInterest_Interest_OtherIndicator_B	button  states=['/1', '/Off']
+AdditionalInterest_ItemDescription_B	text
+AdditionalInterest_Item_BuildingProducerIdentifier_B	text
+AdditionalInterest_Item_LocationProducerIdentifier_B	text
+AdditionalInterest_Item_OtherItemDescription_B	text
+AdditionalInterest_Item_ScheduledItemProducerIdentifier_B	text
+AdditionalInterest_MailingAddress_CityName_B	text
+AdditionalInterest_MailingAddress_CountryCode_B	text
+AdditionalInterest_MailingAddress_LineOne_B	text
+AdditionalInterest_MailingAddress_LineTwo_B	text
+AdditionalInterest_MailingAddress_PostalCode_B	text
+AdditionalInterest_MailingAddress_StateOrProvinceCode_B	text
+Alarm_Burglar_AlarmDescription_B	text
+Alarm_Burglar_CentralStationIndicator_B	button  states=['/1', '/Off']
+Alarm_Burglar_CertificateExpirationDate_B	text
+Alarm_Burglar_CertificateIdentifier_B	text
+Alarm_Burglar_GradeCode_B	text
+Alarm_Burglar_InstalledAndServicedByName_B	text
+Alarm_Burglar_ProtectionExtentCode_B	text
+Alarm_Burglar_WithKeysIndicator_B	button  states=['/1', '/Off']
+BuildingExposure_FrontDescription_B	text
+BuildingExposure_FrontDistance_B	text
+BuildingExposure_LeftDescription_B	text
+BuildingExposure_LeftDistance_B	text
+BuildingExposure_RearDescription_B	text
+BuildingExposure_RearDistance_B	text
+BuildingExposure_RightDescription_B	text
+BuildingExposure_RightDistance_B	text
+BuildingFeatures_HistoricalPropertyIndicator_B	button  states=['/1', '/Off']
+BuildingFeatures_SolidFuelHeaterIndicator_B	button  states=['/1', '/Off']
+BuildingFeatures_SolidFuelHeaterInstallationDate_B	text
+BuildingFeatures_SolidFuelHeaterManufacturerName_B	text
+BuildingFireProtection_Alarm_CentralStationIndicator_B	button  states=['/1', '/Off']
+BuildingFireProtection_Alarm_LocalGongIndicator_B	button  states=['/1', '/Off']
+BuildingFireProtection_Alarm_ManufacturerName_B	text
+BuildingFireProtection_Alarm_ProtectionDescription_B	text
+BuildingFireProtection_Alarm_SprinklerPercent_B	text
+BuildingFireProtection_FireDistrictCode_B	text
+BuildingFireProtection_FireDistrictName_B	text
+BuildingFireProtection_FireStationDistanceMileCount_B	text
+BuildingFireProtection_HydrantDistanceFeetCount_B	text
+BuildingFireProtection_ProtectionClassCode_B	text
+BuildingImprovement_HeatingIndicator_B	button  states=['/1', '/Off']
+BuildingImprovement_HeatingYear_B	text
+BuildingImprovement_OtherDescription_B	text
+BuildingImprovement_OtherIndicator_B	button  states=['/1', '/Off']
+BuildingImprovement_OtherYear_B	text
+BuildingImprovement_PlumbingIndicator_B	button  states=['/1', '/Off']
+BuildingImprovement_PlumbingYear_B	text
+BuildingImprovement_RoofingIndicator_B	button  states=['/1', '/Off']
+BuildingImprovement_RoofingYear_B	text
+BuildingImprovement_WiringIndicator_B	button  states=['/1', '/Off']
+BuildingImprovement_WiringYear_B	text
+BuildingOccupancy_OtherOccupanciesDescription_B	text
+BuildingSecurity_GuardWatchmenClockHourlyIndicator_B	button  states=['/1', '/Off']
+BuildingSecurity_GuardWatchmenCount_B	text
+BuildingSecurity_GuardWatchmenOtherDescription_B	text
+BuildingSecurity_GuardWatchmenOtherIndicator_B	button  states=['/1', '/Off']
+Burglar_LocalGongIndicator_B	button  states=['/1', '/Off']
+CommercialPropertyCoverage_MineSubsidenceOption_NoIndicator_B	button  states=['/1', '/Off']
+CommercialPropertyCoverage_MineSubsidence_LimitAmount_B	text
+CommercialPropertyCoverage_MineSubsidence_YesIndicator_B	button  states=['/1', '/Off']
+CommercialPropertyCoverage_SinkHoleCollapse_LimitAmount_B	text
+CommercialPropertyCoverage_SinkHoleCollapse_NoIndicator_B	button  states=['/1', '/Off']
+CommercialPropertyCoverage_SinkHoleCollapse_YesIndicator_B	button  states=['/1', '/Off']
+CommercialPropertyLineOfBusiness_RemarkText_A	text
+CommercialProperty_Attachment_BusinessIncomeExtraExpenseIndicator_B	button  states=['/1', '/Off']
+CommercialProperty_Attachment_ValueReportingIndicator_B	button  states=['/1', '/Off']
+CommercialProperty_Premises_BlanketNumber_G	text
+CommercialProperty_Premises_BlanketNumber_H	text
+CommercialProperty_Premises_BlanketNumber_I	text
+CommercialProperty_Premises_BlanketNumber_J	text
+CommercialProperty_Premises_BlanketNumber_K	text
+CommercialProperty_Premises_BreakdownOrContaminationIndicator_B	button  states=['/1', '/Off']
+CommercialProperty_Premises_CauseOfLossCode_G	text
+CommercialProperty_Premises_CauseOfLossCode_H	text
+CommercialProperty_Premises_CauseOfLossCode_I	text
+CommercialProperty_Premises_CauseOfLossCode_J	text
+CommercialProperty_Premises_CauseOfLossCode_K	text
+CommercialProperty_Premises_CoinsurancePercent_G	text
+CommercialProperty_Premises_CoinsurancePercent_H	text
+CommercialProperty_Premises_CoinsurancePercent_I	text
+CommercialProperty_Premises_CoinsurancePercent_J	text
+CommercialProperty_Premises_CoinsurancePercent_K	text
+CommercialProperty_Premises_DeductibleAmount_G	text
+CommercialProperty_Premises_DeductibleAmount_H	text
+CommercialProperty_Premises_DeductibleAmount_I	text
+CommercialProperty_Premises_DeductibleAmount_J	text
+CommercialProperty_Premises_DeductibleAmount_K	text
+CommercialProperty_Premises_DeductibleTypeCode_G	text
+CommercialProperty_Premises_DeductibleTypeCode_H	text
+CommercialProperty_Premises_DeductibleTypeCode_I	text
+CommercialProperty_Premises_DeductibleTypeCode_J	text
+CommercialProperty_Premises_DeductibleTypeCode_K	text
+CommercialProperty_Premises_FormsAndConditions_G	text
+CommercialProperty_Premises_FormsAndConditions_H	text
+CommercialProperty_Premises_FormsAndConditions_I	text
+CommercialProperty_Premises_FormsAndConditions_J	text
+CommercialProperty_Premises_FormsAndConditions_K	text
+CommercialProperty_Premises_InflationGuardPercent_G	text
+CommercialProperty_Premises_InflationGuardPercent_H	text
+CommercialProperty_Premises_InflationGuardPercent_I	text
+CommercialProperty_Premises_InflationGuardPercent_J	text
+CommercialProperty_Premises_InflationGuardPercent_K	text
+CommercialProperty_Premises_LimitAmount_G	text
+CommercialProperty_Premises_LimitAmount_H	text
+CommercialProperty_Premises_LimitAmount_I	text
+CommercialProperty_Premises_LimitAmount_J	text
+CommercialProperty_Premises_LimitAmount_K	text
+CommercialProperty_Premises_OptionsDescription_B	text
+CommercialProperty_Premises_OtherIndicator_B	button  states=['/1', '/Off']
+CommercialProperty_Premises_PowerOutageIndicator_B	button  states=['/1', '/Off']
+CommercialProperty_Premises_RemarkText_C	text
+CommercialProperty_Premises_SellingPriceIndicator_B	button  states=['/1', '/Off']
+CommercialProperty_Premises_SubjectOfInsuranceCode_G	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_H	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_I	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_J	text
+CommercialProperty_Premises_SubjectOfInsuranceCode_K	text
+CommercialProperty_Premises_ValuationCode_G	text
+CommercialProperty_Premises_ValuationCode_H	text
+CommercialProperty_Premises_ValuationCode_I	text
+CommercialProperty_Premises_ValuationCode_J	text
+CommercialProperty_Premises_ValuationCode_K	text
+CommercialProperty_Spoilage_DeductibleAmount_B	text
+CommercialProperty_Spoilage_LimitAmount_B	text
+CommercialProperty_Spoilage_PropertyDescription_B	text
+CommercialProperty_Spoilage_RefrigeratorMaintenanceCode_B	text
+CommercialProperty_Spoilage_YesNoCode_B	text
+CommercialStructure_Building_ProducerIdentifier_B	text
+CommercialStructure_Building_SublocationDescription_B	text
+CommercialStructure_BuiltYear_B	text
+CommercialStructure_HeatingBoilerInsuredElsewhereCode_C	text
+CommercialStructure_HeatingBoilerInsuredElsewhereCode_D	text
+CommercialStructure_Location_ProducerIdentifier_B	text
+CommercialStructure_PhysicalAddress_LineOne_B	text
+CommercialStructure_PrimaryHeat_BoilerIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_PrimaryHeat_OtherDescription_B	text
+CommercialStructure_PrimaryHeat_OtherIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_PrimaryHeat_SolidFuelIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_SecondaryHeat_BoilerIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_SecondaryHeat_OtherDescription_B	text
+CommercialStructure_SecondaryHeat_OtherIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_SecondaryHeat_SolidFuelIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_TaxCode_B	text
+CommercialStructure_WindClass_OtherDescription_B	text
+CommercialStructure_WindClass_OtherIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_WindClass_ResistiveIndicator_B	button  states=['/1', '/Off']
+CommercialStructure_WindClass_SemiResistiveIndicator_B	button  states=['/1', '/Off']
+Construction_BasementCount_B	text
+Construction_BuildingArea_B	text
+Construction_BuildingCodeEffectivenessGradeCode_B	text
+Construction_ConstructionCode_B	text
+Construction_OpenSidesCount_B	text
+Construction_RoofMaterialCode_B	text
+Construction_StoreyCount_B	text
+GeneralLiabilityLineOfBusiness_Attachment_AdditionalInterestIndicator_B	button  states=['/1', '/Off']

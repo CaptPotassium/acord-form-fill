@@ -1,0 +1,298 @@
+# ACORD 125 (2016/03) - Commercial Insurance Application, Applicant Information
+#
+# Mapped against the real fillable blank (pages 1-4 of the submission packet).
+# Field names came from scripts/dump_fields.py, not from guesswork.
+#
+# Scope note: the full packet carries 924 fields. We map the applicant, premises,
+# prior carrier and loss history sections -- the ones sourceable from account
+# documents. Carrier/underwriter blocks, additional interests, contact details,
+# signatures and office-use fields are deliberately unmapped and surface as gaps
+# in the review report rather than being silently ignored.
+
+form:
+  id: acord_125
+  title: ACORD 125 - Commercial Insurance Application (Applicant Information Section)
+  pdf: acord_submission_packet.pdf
+  edition: 2016/03
+
+fields:
+  # --- Agency / producer -----------------------------------------------
+  ACORD_CurrentDate:
+    path: form_meta.completion_date
+    transform: date
+    validate: date
+  ACORD_AgencyName:
+    path: producer.agency_name
+    required: true
+  ACORD_ProducerContact:
+    path: producer.contact_name
+  ACORD_ProducerPhoneNumber:
+    path: producer.phone
+    transform: phone
+    validate: phone
+  ACORD_ProducerEmailAddress:
+    path: producer.email
+    validate: email
+  ACORD_ProducerCode:
+    path: producer.producer_code
+  ACORD_AgencyCustomerID:
+    path: producer.agency_customer_id
+
+  # --- Transaction status ----------------------------------------------
+  ACORD_Transaction_Quote:
+    path: policy.transaction_type
+    when: {equals: Quote}
+  ACORD_Transaction_IssuePolicy:
+    path: policy.transaction_type
+    when: {equals: Issue Policy}
+  ACORD_Transaction_Renew:
+    path: policy.transaction_type
+    when: {equals: Renew}
+
+  # --- Policy -----------------------------------------------------------
+  ACORD_Policy_EffectiveDate:
+    path: policy.effective_date
+    transform: date
+    validate: date
+    required: true
+  ACORD_Policy_ExpirationDate:
+    path: policy.expiration_date
+    transform: date
+    validate: date
+    required: true
+  ACORD_Policy_PaymentPlan:
+    path: policy.payment_plan
+  ACORD_Policy_DirectPlan:
+    path: policy.billing_plan
+    when: {equals: Direct Bill}
+  ACORD_Policy_AgencyPlan:
+    path: policy.billing_plan
+    when: {equals: Agency Bill}
+
+  # --- First named insured ---------------------------------------------
+  # The form collapses name and full mailing address into one box, so this is a
+  # composite of several canonical paths rather than a single one.
+  ACORD_Policy_Insured1_Name:
+    path: applicant.named_insured
+    required: true
+  ACORD_Policy_Insured1_MailingAddress:
+    required: true
+    template: "{applicant.mailing_address.street}\n{applicant.mailing_address.city}, {applicant.mailing_address.state} {applicant.mailing_address.zip}"
+  ACORD_Policy_Insured1_FEINSSN:
+    path: applicant.fein
+    transform: fein
+    validate: fein
+    required: true
+  ACORD_Policy_Insured1_NAICS:
+    path: business.naics
+    validate: naics
+    required: true
+  ACORD_Policy_Insured1_SIC:
+    path: business.sic
+  ACORD_Policy_Insured1_PhoneNumber:
+    path: applicant.business_phone
+    transform: phone
+    validate: phone
+  ACORD_Policy_Insured1_Website:
+    path: applicant.website
+
+  ACORD_Policy_Insured1_Type_Corporation:
+    path: applicant.entity_type
+    when: {equals: Corporation}
+  ACORD_Policy_Insured1_Type_LLC:
+    path: applicant.entity_type
+    when: {in: [LLC, Limited Liability Company]}
+  ACORD_Policy_Insured1_Type_Partnership:
+    path: applicant.entity_type
+    when: {equals: Partnership}
+  ACORD_Policy_Insured1_Type_Individual:
+    path: applicant.entity_type
+    when: {in: [Individual, Sole Proprietor]}
+  ACORD_Policy_Insured1_Type_SCorp:
+    path: applicant.entity_type
+    when: {in: [S-Corp, Subchapter S Corporation]}
+  ACORD_Policy_Insured1_Type_JointVenture:
+    path: applicant.entity_type
+    when: {equals: Joint Venture}
+  ACORD_Policy_Insured1_Type_NotForProfit:
+    path: applicant.entity_type
+    when: {equals: Non-Profit}
+  ACORD_Policy_Insured1_Type_Trust:
+    path: applicant.entity_type
+    when: {equals: Trust}
+
+  # --- Nature of business ------------------------------------------------
+  ACORD_NatureOfBusiness_Description:
+    path: business.operations_description
+  ACORD_NatureOfBusiness_StartDate:
+    path: business.date_business_started
+    transform: date
+    validate: date
+  ACORD_NatureOfBusiness_Contractor:
+    path: business.nature_of_business
+    when: {contains: Contractor}
+  ACORD_NatureOfBusiness_Service:
+    path: business.nature_of_business
+    when: {contains: Service}
+  ACORD_NatureOfBusiness_Manufacturing:
+    path: business.nature_of_business
+    when: {contains: Manufacturing}
+  ACORD_NatureOfBusiness_Retail:
+    path: business.nature_of_business
+    when: {contains: Retail}
+  ACORD_NatureOfBusiness_Wholesale:
+    path: business.nature_of_business
+    when: {contains: Wholesale}
+  ACORD_NatureOfBusiness_Office:
+    path: business.nature_of_business
+    when: {contains: Office}
+  ACORD_NatureOfBusiness_Restaurant:
+    path: business.nature_of_business
+    when: {contains: Restaurant}
+
+  # --- General information ------------------------------------------------
+  # No declarations page or AMS export answers these. They always come from the
+  # insured, so they are required by design and the resulting blockers are the
+  # tool telling a CSR to make a phone call.
+  ACORD_General_Safety:
+    path: general_information.safety_program
+    when: {is_true: true}
+    required: true
+  ACORD_General_CoverageTerminated:
+    path: general_information.prior_cancellation
+    when: {is_true: true}
+    required: true
+  ACORD_General_NegativeFinancialAction:
+    path: general_information.bankruptcy
+    when: {is_true: true}
+    required: true
+  ACORD_General_JudgementLien:
+    path: general_information.judgement_or_lien
+    when: {is_true: true}
+    required: true
+  ACORD_General_Foreign:
+    path: general_information.foreign_operations
+    when: {is_true: true}
+    required: true
+  ACORD_General_Subsidiary:
+    path: general_information.is_subsidiary
+    when: {is_true: true}
+  ACORD_General_Exposure:
+    path: general_information.flammables_exposure
+    when: {is_true: true}
+  ACORD_General_PossessDrones:
+    path: general_information.operates_drones
+    when: {is_true: true}
+
+  ACORD_General_Remarks:
+    path: submission.remarks
+
+  # --- Loss history summary -------------------------------------------
+  ACORD_LossHistory_NumberOfYears:
+    path: loss_summary.years_covered
+    transform: number
+  ACORD_LossHistory_TotalLosses:
+    path: loss_summary.total_incurred
+    transform: currency
+
+repeaters:
+  # Premises. The form holds four locations; overflow is flagged and belongs on
+  # an attached ACORD 823.
+  locations:
+    path: premises
+    indices: [1, 2, 3, 4]
+    fields:
+      'ACORD_Location{i}_LocationNumber':
+        item_path: location_number
+        transform: number
+      'ACORD_Location{i}_Street':
+        item_path: address.street
+      'ACORD_Location{i}_City':
+        item_path: address.city
+      'ACORD_Location{i}_State':
+        item_path: address.state
+        transform: upper
+        validate: state
+      'ACORD_Location{i}_ZIP':
+        item_path: address.zip
+        transform: zip
+        validate: zip
+      'ACORD_Location{i}_County':
+        item_path: address.county
+      'ACORD_Location{i}_Interest_Owner':
+        item_path: interest
+        when: {equals: Owner}
+      'ACORD_Location{i}_Interest_Tenant':
+        item_path: interest
+        when: {equals: Tenant}
+      'ACORD_Location{i}_BuildingArea':
+        item_path: total_building_area
+        transform: number
+      'ACORD_Location{i}_OccupiedArea':
+        item_path: occupied_area
+        transform: number
+      'ACORD_Location{i}_AnnualRevenue':
+        item_path: annual_revenue
+        transform: currency
+      'ACORD_Location{i}_Employees_FullTime':
+        item_path: full_time_employees
+        transform: number
+      'ACORD_Location{i}_Employees_PartTime':
+        item_path: part_time_employees
+        transform: number
+      'ACORD_Location{i}_Description':
+        item_path: description_of_operations
+        max_length: 120
+
+  # Prior carrier grid. The vendor named every row *Auto* regardless of
+  # category -- a good example of why field names get dumped, not guessed.
+  prior_carriers:
+    path: prior_carriers
+    indices: [1, 2, 3]
+    fields:
+      'ACORD_PriorCarrier_{i}_AutoYear':
+        item_path: year
+      'ACORD_PriorCarrier_{i}_AutoCarrier':
+        item_path: carrier_name
+      'ACORD_PriorCarrier_{i}_AutoPolicyNumber':
+        item_path: policy_number
+      'ACORD_PriorCarrier_{i}_AutoEffectiveDate':
+        item_path: effective_date
+        transform: date
+        validate: date
+      'ACORD_PriorCarrier_{i}_AutoExpirationDate':
+        item_path: expiration_date
+        transform: date
+        validate: date
+      'ACORD_PriorCarrier_{i}_AutoPremium':
+        item_path: annual_premium
+        transform: currency
+
+  losses:
+    path: losses
+    indices: [1, 2, 3]
+    fields:
+      'ACORD_LossHistory_{i}_OccurenceDate':
+        item_path: date_of_occurrence
+        transform: date
+        validate: date
+      'ACORD_LossHistory_{i}_DateOfClaim':
+        item_path: date_of_claim
+        transform: date
+      'ACORD_LossHistory_{i}_LOB':
+        item_path: line
+      'ACORD_LossHistory_{i}_Description':
+        item_path: description
+        max_length: 120
+      'ACORD_LossHistory_{i}_AmountPaid':
+        item_path: amount_paid
+        transform: currency
+      'ACORD_LossHistory_{i}_AmountReserved':
+        item_path: amount_reserved
+        transform: currency
+      'ACORD_LossHistory_{i}_ClaimOpen':
+        item_path: claim_open
+        transform: yesno
+      'ACORD_LossHistory_{i}_Subrogation':
+        item_path: subrogation
+        transform: yesno
