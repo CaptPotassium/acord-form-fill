@@ -1,0 +1,3 @@
+ClientLookupCode,LocationNumber,BuildingNumber,AddressLine1,AddressLine2,City,State,Zip,County,InterestType,TotalBuildingArea,AreaOccupied,AnnualRevenueAtLocation,EmployeesFullTime,EmployeesPartTime,DescriptionOfOperations
+BRIGHTMECH-01,1,1,"1420 Harbor Point Blvd","Suite 300",Stamford,CT,06902,Fairfield,Tenant,,12000,,,,
+BRIGHTMECH-01,2,1,"88 Ironworks Road",,Bridgeport,CT,06605,Fairfield,Owner,26500,,,,,

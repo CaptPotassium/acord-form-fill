@@ -1,0 +1,238 @@
+# Applied Epic export -> canonical account record
+#
+# WHY THIS FILE EXISTS
+# --------------------
+# Applied Epic's export is driven by a mapping file the agency configures, so
+# the column names differ from one brokerage to the next. A vendor cannot ship
+# code that assumes a fixed schema. So the column layout is configuration, the
+# same way each form's field layout is configuration.
+#
+# Onboarding a new customer's export = copy this file, rename the columns.
+# No Python changes. That is the deployment story.
+#
+# The sample CSVs under samples/ams/ are SYNTHETIC. They are modelled on the
+# shape of a commercial-lines Epic export (one file per area: client, policy,
+# locations, claims, classifications, joined on the client lookup code) but the
+# exact column names are invented. A real engagement starts by asking the
+# agency for one real export and writing this file against it -- which is an
+# afternoon, not a project.
+
+source:
+  id: applied_epic
+  label: Applied Epic commercial lines export (synthetic sample)
+  join_key: ClientLookupCode
+
+files:
+
+  # ---- account / client level -------------------------------------------
+  epic_client.csv:
+    mode: single
+    columns:
+      ClientName:            {path: applicant.named_insured, confidence: high}
+      DBAName:               {path: applicant.dba, confidence: high}
+      FEIN:                  {path: applicant.fein, confidence: high}
+      LegalEntityType:       {path: applicant.entity_type, confidence: high}
+      WebAddress:            {path: applicant.website, confidence: high}
+      BusinessPhone:         {path: applicant.business_phone, confidence: high}
+      MailingAddressLine1:   {path: applicant.mailing_address.street, confidence: high}
+      MailingCity:           {path: applicant.mailing_address.city, confidence: high}
+      MailingState:          {path: applicant.mailing_address.state, confidence: high}
+      MailingZip:            {path: applicant.mailing_address.zip, confidence: high}
+      PhysicalCounty:        {path: applicant.mailing_address.county, confidence: high}
+      NAICSCode:             {path: business.naics, confidence: high}
+      SICCode:               {path: business.sic, confidence: high}
+      AnnualRevenue:         {path: business.annual_revenue, transform: number, confidence: high}
+      EmployeesFullTime:     {path: business.full_time_employees, transform: int, confidence: high}
+      EmployeesPartTime:     {path: business.part_time_employees, transform: int, confidence: high}
+      DateBusinessStarted:   {path: business.date_business_started, transform: date, confidence: high}
+      AgencyName:            {path: producer.agency_name, confidence: high}
+      ProducerCode:          {path: producer.producer_code, confidence: high}
+      AccountManagerName:    {path: producer.contact_name, confidence: high}
+      AccountManagerEmail:   {path: producer.email, confidence: high}
+      AgencyPhone:           {path: producer.phone, confidence: high}
+      ClientLookupCode:      {path: producer.agency_customer_id, confidence: high}
+
+  # ---- policy -----------------------------------------------------------
+  # Epic holds both the expiring term and the requested renewal term. Picking
+  # the wrong one puts a policy period in the past, which is the most common
+  # error on a renewal submission. So select explicitly rather than taking
+  # whichever row came first.
+  epic_policy.csv:
+    mode: single
+    select:
+      where: {PolicyStatus: Renewal Requested}
+      on_no_match: first_row
+      note: >
+        Selected the row marked Renewal Requested. The row marked Expiring
+        feeds prior_carriers instead.
+    columns:
+      EffectiveDate:                  {path: policy.effective_date, transform: date, confidence: high}
+      ExpirationDate:                 {path: policy.expiration_date, transform: date, confidence: high}
+      TransactionType:                {path: policy.transaction_type, confidence: high}
+      LineOfBusiness:                 {path: policy.lines_requested, transform: listify, confidence: high}
+      BillingMethod:                  {path: policy.billing_plan, confidence: high}
+      PaymentPlan:                    {path: policy.payment_plan, confidence: high}
+      CoverageTrigger:                {path: general_liability.coverage_trigger, confidence: high}
+      AggregateAppliesPer:            {path: general_liability.aggregate_applies_per, confidence: high}
+      LimitEachOccurrence:            {path: general_liability.limits.each_occurrence, transform: number, confidence: high}
+      LimitDamageToRentedPremises:    {path: general_liability.limits.damage_to_rented_premises, transform: number, confidence: high}
+      LimitMedicalExpense:            {path: general_liability.limits.medical_expense, transform: number, confidence: high}
+      LimitPersonalAdvertisingInjury: {path: general_liability.limits.personal_and_advertising_injury, transform: number, confidence: high}
+      LimitGeneralAggregate:          {path: general_liability.limits.general_aggregate, transform: number, confidence: high}
+      LimitProductsCompletedOps:      {path: general_liability.limits.products_completed_operations_aggregate, transform: number, confidence: high}
+      DeductibleBasis:                {path: general_liability.deductible.basis, confidence: high}
+      DeductibleAmount:               {path: general_liability.deductible.property_damage_amount, transform: number, confidence: high}
+      PolicyNumber:                   {path: policy.policy_number, confidence: high}
+
+  # ---- prior carrier: the same file, the expiring row -------------------
+  epic_policy.csv#prior:
+    file: epic_policy.csv
+    mode: array
+    target: prior_carriers
+    select:
+      where: {PolicyStatus: Expiring}
+    columns:
+      CarrierName:     {path: carrier_name, confidence: high}
+      PolicyNumber:    {path: policy_number, confidence: high}
+      AnnualPremium:   {path: annual_premium, transform: number, confidence: high}
+      EffectiveDate:   {path: effective_date, transform: date, confidence: high}
+      ExpirationDate:  {path: expiration_date, transform: date, confidence: high}
+      LineOfBusiness:  {path: line, confidence: high}
+
+  # ---- premises ---------------------------------------------------------
+  epic_locations.csv:
+    mode: array
+    target: premises
+    columns:
+      LocationNumber:           {path: location_number, transform: int, confidence: high}
+      AddressLine1:             {path: address.street, confidence: high}
+      City:                     {path: address.city, confidence: high}
+      State:                    {path: address.state, transform: upper, confidence: high}
+      Zip:                      {path: address.zip, confidence: high}
+      County:                   {path: address.county, confidence: high}
+      InterestType:             {path: interest, confidence: high}
+      TotalBuildingArea:        {path: total_building_area, transform: number, confidence: high}
+      AreaOccupied:             {path: occupied_area, transform: number, confidence: high}
+      AnnualRevenueAtLocation:  {path: annual_revenue, transform: number, confidence: high}
+      EmployeesFullTime:        {path: full_time_employees, transform: int, confidence: high}
+      EmployeesPartTime:        {path: part_time_employees, transform: int, confidence: high}
+      DescriptionOfOperations:  {path: description_of_operations, confidence: high}
+
+  # ---- loss history -----------------------------------------------------
+  epic_claims.csv:
+    mode: array
+    target: losses
+    columns:
+      DateOfLoss:       {path: date_of_occurrence, transform: date, confidence: high}
+      DateReported:     {path: date_of_claim, transform: date, confidence: high}
+      ClaimNumber:      {path: claim_number, confidence: high}
+      LineOfBusiness:   {path: line, confidence: high}
+      LossDescription:  {path: description, confidence: high}
+      AmountPaid:       {path: amount_paid, transform: number, confidence: high}
+      AmountReserved:   {path: amount_reserved, transform: number, confidence: high}
+      ClaimStatus:      {path: claim_open, transform: open_closed, confidence: high}
+      Subrogation:      {path: subrogation, transform: yesno_bool, confidence: high}
+
+  # ---- general liability class codes ------------------------------------
+  epic_classifications.csv:
+    mode: array
+    target: general_liability.classifications
+    columns:
+      LocationNumber:    {path: location_number, transform: int, confidence: high}
+      ClassCode:         {path: class_code, confidence: high}
+      ClassDescription:  {path: description, confidence: high}
+      PremiumBasis:      {path: premium_basis, confidence: high}
+      Exposure:          {path: exposure, transform: number, confidence: high}
+      Territory:         {path: territory, confidence: high}
+
+# Values computed from what was ingested rather than read from a column.
+# Kept separate and explicit so a reviewer can see they are derived.
+derive:
+  loss_summary.total_incurred:
+    sum_over: losses
+    of: [amount_paid, amount_reserved]
+    confidence: high
+    note: sum of paid plus reserved across all claim rows
+  loss_summary.valued_as_of:
+    first_of: epic_claims.csv
+    column: ValuedAsOf
+    transform: date
+    confidence: high
+    note: valuation date from the claims export
+  general_liability.commercial_general_liability:
+    constant: true
+    confidence: high
+    note: general liability is present in the policy export
+  # The export carries one combined "Bodily Injury and Property Damage"
+  # deductible. The form has a separate box for each, so fan the one value out
+  # to both and record that it came from a combined column.
+  general_liability.deductible.bodily_injury_amount:
+    copy_from: general_liability.deductible.property_damage_amount
+    confidence: high
+    note: export carries a single combined bodily-injury/property-damage deductible
+  general_liability.deductible.applies_to_property_damage:
+    constant: true
+    confidence: high
+    note: export lists the deductible as applying to property damage
+  general_liability.deductible.applies_to_bodily_injury:
+    constant: true
+    confidence: high
+    note: export lists the deductible as applying to bodily injury
+
+  # A renewal has no policy number yet, so the application carries the expiring
+  # one. Taken from the prior-carrier row rather than left blank.
+  policy.policy_number:
+    copy_from: prior_carriers.0.policy_number
+    confidence: high
+    note: expiring policy number; a renewal term has no number assigned yet
+
+  prior_carriers[].year:
+    year_of: effective_date
+    confidence: high
+    note: year taken from the term start date
+
+  loss_summary.years_covered:
+    span_years: {array: losses, field: date_of_occurrence}
+    confidence: low
+    note: >
+      calendar years in which a claim OCCURRED -- not the period the loss run
+      covers. A five-year run with claims in only two years still covers five
+      years, and the export does not say which. Deliberately low confidence so
+      it reaches the review queue: an underwriter reads this number as how much
+      history was supplied, so a wrong value understates the submission.
+
+  # NAICS is a published federal standard, so the code maps to an industry type
+  # by lookup. No judgement, therefore no model.
+  business.nature_of_business:
+    prefix_lookup:
+      from: business.naics
+      table:
+        "2382": [Contractor, Service]
+        "238":  [Contractor]
+        "23":   [Contractor]
+        "44":   [Retail]
+        "42":   [Wholesale]
+        "31":   [Manufacturing]
+        "72":   [Restaurant]
+    confidence: high
+    note: industry type derived from the NAICS code
+
+  general_liability.classifications[].premium_basis_code:
+    letter_from: premium_basis
+    lookup: {Payroll: P, Sales: S, Area: A, Units: U, Admissions: M, Cost: C}
+    confidence: high
+    note: the form wants the single-letter code; derived from the premium basis word
+
+# Fields no AMS export answers. Listed so they are visibly absent by design
+# rather than accidentally missing. These always require a person.
+never_in_export:
+  - general_information.prior_cancellation
+  - general_information.bankruptcy
+  - general_information.judgement_or_lien
+  - general_information.safety_program
+  - general_information.foreign_operations
+  - general_information.is_subsidiary
+  - general_information.flammables_exposure
+  - general_information.operates_drones
+  - business.operations_description
+  - general_liability.contractors.subcontracted_work_percent

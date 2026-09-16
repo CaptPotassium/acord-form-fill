@@ -1,0 +1,803 @@
+{
+  "account": {
+    "applicant": {
+      "named_insured": "Brightwater Mechanical Contractors, Inc.",
+      "dba": "Brightwater Mechanical",
+      "fein": "06-1583427",
+      "entity_type": "Corporation",
+      "website": "www.brightwatermech.com",
+      "business_phone": "(203) 555-0148",
+      "mailing_address": {
+        "street": "1420 Harbor Point Blvd",
+        "city": "Stamford",
+        "state": "CT",
+        "zip": "06902",
+        "county": "Fairfield"
+      }
+    },
+    "business": {
+      "naics": "238220",
+      "sic": "1711",
+      "annual_revenue": 14750000,
+      "full_time_employees": 62,
+      "part_time_employees": 8,
+      "nature_of_business": [
+        "Contractor",
+        "Service"
+      ]
+    },
+    "producer": {
+      "agency_name": "Kestrel Risk Partners",
+      "producer_code": "KRP-0042",
+      "contact_name": "Marcus Alvarado",
+      "email": "malvarado@kestrelrisk.com",
+      "phone": "(203) 555-0900",
+      "agency_customer_id": "BRIGHTMECH-01"
+    },
+    "policy": {
+      "effective_date": "07/01/2026",
+      "expiration_date": "07/01/2027",
+      "transaction_type": "Renew",
+      "lines_requested": [
+        "General Liability"
+      ],
+      "billing_plan": "Agency Bill",
+      "payment_plan": "Annual",
+      "policy_number": "CGL-4471902-03"
+    },
+    "general_liability": {
+      "coverage_trigger": "Occurrence",
+      "aggregate_applies_per": "Project",
+      "limits": {
+        "each_occurrence": 1000000,
+        "damage_to_rented_premises": 100000,
+        "medical_expense": 10000,
+        "personal_and_advertising_injury": 1000000,
+        "general_aggregate": 2000000,
+        "products_completed_operations_aggregate": 2000000
+      },
+      "deductible": {
+        "basis": "Per Occurrence",
+        "property_damage_amount": 5000,
+        "bodily_injury_amount": 5000,
+        "applies_to_property_damage": true,
+        "applies_to_bodily_injury": true
+      },
+      "classifications": [
+        {
+          "location_number": 1,
+          "class_code": "98482",
+          "description": "Plumbing - commercial/industrial",
+          "premium_basis": "Payroll",
+          "exposure": 2850000,
+          "premium_basis_code": "P"
+        },
+        {
+          "location_number": 1,
+          "class_code": "98677",
+          "description": "Heating/AC systems - installation, service, repair",
+          "premium_basis": "Payroll",
+          "exposure": 1240000,
+          "premium_basis_code": "P"
+        }
+      ],
+      "commercial_general_liability": true
+    },
+    "prior_carriers": [
+      {
+        "carrier_name": "Meridian Casualty Insurance Company",
+        "policy_number": "CGL-4471902-03",
+        "annual_premium": 47850,
+        "effective_date": "07/01/2025",
+        "expiration_date": "07/01/2026",
+        "line": "General Liability",
+        "year": "2025"
+      }
+    ],
+    "premises": [
+      {
+        "location_number": 1,
+        "address": {
+          "street": "1420 Harbor Point Blvd",
+          "city": "Stamford",
+          "state": "CT",
+          "zip": "06902",
+          "county": "Fairfield"
+        },
+        "interest": "Tenant",
+        "occupied_area": 12000
+      },
+      {
+        "location_number": 2,
+        "address": {
+          "street": "88 Ironworks Road",
+          "city": "Bridgeport",
+          "state": "CT",
+          "zip": "06605",
+          "county": "Fairfield"
+        },
+        "interest": "Owner",
+        "total_building_area": 26500
+      }
+    ],
+    "losses": [
+      {
+        "date_of_occurrence": "03/14/2024",
+        "claim_number": "GL-224-9911",
+        "line": "General Liability",
+        "description": "Water damage to tenant space during pipe replacement",
+        "amount_paid": 18400,
+        "amount_reserved": 0,
+        "claim_open": false
+      },
+      {
+        "date_of_occurrence": "11/02/2024",
+        "claim_number": "GL-224-1327",
+        "line": "General Liability",
+        "description": "Slip and fall, jobsite visitor, contusion",
+        "amount_paid": 6250,
+        "amount_reserved": 2500,
+        "claim_open": true
+      },
+      {
+        "date_of_occurrence": "08/19/2025",
+        "claim_number": "GL-225-4402",
+        "line": "General Liability",
+        "description": "Property damage - HVAC unit fell during install",
+        "amount_paid": 31900,
+        "amount_reserved": 15000,
+        "claim_open": true
+      }
+    ],
+    "loss_summary": {
+      "total_incurred": 74050,
+      "valued_as_of": "05/31/2026",
+      "years_covered": 2
+    },
+    "form_meta": {
+      "completion_date": "09/16/2026"
+    }
+  },
+  "provenance": {
+    "applicant.named_insured": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClientName"
+    },
+    "applicant.dba": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column DBAName"
+    },
+    "applicant.fein": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column FEIN"
+    },
+    "applicant.entity_type": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LegalEntityType"
+    },
+    "applicant.website": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column WebAddress"
+    },
+    "applicant.business_phone": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column BusinessPhone"
+    },
+    "applicant.mailing_address.street": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column MailingAddressLine1"
+    },
+    "applicant.mailing_address.city": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column MailingCity"
+    },
+    "applicant.mailing_address.state": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column MailingState"
+    },
+    "applicant.mailing_address.zip": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column MailingZip"
+    },
+    "applicant.mailing_address.county": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PhysicalCounty"
+    },
+    "business.naics": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column NAICSCode"
+    },
+    "business.sic": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column SICCode"
+    },
+    "business.annual_revenue": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AnnualRevenue"
+    },
+    "business.full_time_employees": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column EmployeesFullTime"
+    },
+    "business.part_time_employees": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column EmployeesPartTime"
+    },
+    "producer.agency_name": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AgencyName"
+    },
+    "producer.producer_code": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ProducerCode"
+    },
+    "producer.contact_name": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AccountManagerName"
+    },
+    "producer.email": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AccountManagerEmail"
+    },
+    "producer.phone": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AgencyPhone"
+    },
+    "producer.agency_customer_id": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClientLookupCode"
+    },
+    "policy.effective_date": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column EffectiveDate"
+    },
+    "policy.expiration_date": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ExpirationDate"
+    },
+    "policy.transaction_type": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column TransactionType"
+    },
+    "policy.lines_requested": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LineOfBusiness"
+    },
+    "policy.billing_plan": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column BillingMethod"
+    },
+    "policy.payment_plan": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PaymentPlan"
+    },
+    "general_liability.coverage_trigger": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column CoverageTrigger"
+    },
+    "general_liability.aggregate_applies_per": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AggregateAppliesPer"
+    },
+    "general_liability.limits.each_occurrence": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LimitEachOccurrence"
+    },
+    "general_liability.limits.damage_to_rented_premises": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LimitDamageToRentedPremises"
+    },
+    "general_liability.limits.medical_expense": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LimitMedicalExpense"
+    },
+    "general_liability.limits.personal_and_advertising_injury": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LimitPersonalAdvertisingInjury"
+    },
+    "general_liability.limits.general_aggregate": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LimitGeneralAggregate"
+    },
+    "general_liability.limits.products_completed_operations_aggregate": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LimitProductsCompletedOps"
+    },
+    "general_liability.deductible.basis": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column DeductibleBasis"
+    },
+    "general_liability.deductible.property_damage_amount": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column DeductibleAmount"
+    },
+    "prior_carriers.0.carrier_name": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column CarrierName"
+    },
+    "prior_carriers.0.policy_number": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PolicyNumber"
+    },
+    "prior_carriers.0.annual_premium": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AnnualPremium"
+    },
+    "prior_carriers.0.effective_date": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column EffectiveDate"
+    },
+    "prior_carriers.0.expiration_date": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ExpirationDate"
+    },
+    "prior_carriers.0.line": {
+      "source": "epic_policy.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LineOfBusiness"
+    },
+    "premises.0.location_number": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LocationNumber"
+    },
+    "premises.0.address.street": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AddressLine1"
+    },
+    "premises.0.address.city": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column City"
+    },
+    "premises.0.address.state": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column State"
+    },
+    "premises.0.address.zip": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column Zip"
+    },
+    "premises.0.address.county": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column County"
+    },
+    "premises.0.interest": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column InterestType"
+    },
+    "premises.0.occupied_area": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AreaOccupied"
+    },
+    "premises.1.location_number": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LocationNumber"
+    },
+    "premises.1.address.street": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AddressLine1"
+    },
+    "premises.1.address.city": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column City"
+    },
+    "premises.1.address.state": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column State"
+    },
+    "premises.1.address.zip": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column Zip"
+    },
+    "premises.1.address.county": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column County"
+    },
+    "premises.1.interest": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column InterestType"
+    },
+    "premises.1.total_building_area": {
+      "source": "epic_locations.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column TotalBuildingArea"
+    },
+    "losses.0.date_of_occurrence": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column DateOfLoss"
+    },
+    "losses.0.claim_number": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClaimNumber"
+    },
+    "losses.0.line": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LineOfBusiness"
+    },
+    "losses.0.description": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LossDescription"
+    },
+    "losses.0.amount_paid": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AmountPaid"
+    },
+    "losses.0.amount_reserved": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AmountReserved"
+    },
+    "losses.0.claim_open": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClaimStatus"
+    },
+    "losses.1.date_of_occurrence": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column DateOfLoss"
+    },
+    "losses.1.claim_number": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClaimNumber"
+    },
+    "losses.1.line": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LineOfBusiness"
+    },
+    "losses.1.description": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LossDescription"
+    },
+    "losses.1.amount_paid": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AmountPaid"
+    },
+    "losses.1.amount_reserved": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AmountReserved"
+    },
+    "losses.1.claim_open": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClaimStatus"
+    },
+    "losses.2.date_of_occurrence": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column DateOfLoss"
+    },
+    "losses.2.claim_number": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClaimNumber"
+    },
+    "losses.2.line": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LineOfBusiness"
+    },
+    "losses.2.description": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LossDescription"
+    },
+    "losses.2.amount_paid": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AmountPaid"
+    },
+    "losses.2.amount_reserved": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column AmountReserved"
+    },
+    "losses.2.claim_open": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClaimStatus"
+    },
+    "general_liability.classifications.0.location_number": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LocationNumber"
+    },
+    "general_liability.classifications.0.class_code": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClassCode"
+    },
+    "general_liability.classifications.0.description": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClassDescription"
+    },
+    "general_liability.classifications.0.premium_basis": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PremiumBasis"
+    },
+    "general_liability.classifications.0.exposure": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column Exposure"
+    },
+    "general_liability.classifications.1.location_number": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column LocationNumber"
+    },
+    "general_liability.classifications.1.class_code": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClassCode"
+    },
+    "general_liability.classifications.1.description": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column ClassDescription"
+    },
+    "general_liability.classifications.1.premium_basis": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PremiumBasis"
+    },
+    "general_liability.classifications.1.exposure": {
+      "source": "epic_classifications.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column Exposure"
+    },
+    "loss_summary.total_incurred": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "sum of paid plus reserved across all claim rows"
+    },
+    "loss_summary.valued_as_of": {
+      "source": "epic_claims.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "valuation date from the claims export"
+    },
+    "general_liability.commercial_general_liability": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "general liability is present in the policy export"
+    },
+    "general_liability.deductible.bodily_injury_amount": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "export carries a single combined bodily-injury/property-damage deductible"
+    },
+    "general_liability.deductible.applies_to_property_damage": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "export lists the deductible as applying to property damage"
+    },
+    "general_liability.deductible.applies_to_bodily_injury": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "export lists the deductible as applying to bodily injury"
+    },
+    "policy.policy_number": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "expiring policy number; a renewal term has no number assigned yet"
+    },
+    "prior_carriers.0.year": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "year taken from the term start date"
+    },
+    "loss_summary.years_covered": {
+      "source": "derived",
+      "page": null,
+      "confidence": "low",
+      "note": "calendar years in which a claim OCCURRED -- not the period the loss run covers. A five-year run with claims in only two years still covers five years, and the export does not say which. Deliberately low confidence so it reaches the review queue: an underwriter reads this number as how much history was supplied, so a wrong value understates the submission.\n (claims span 2024-2025)"
+    },
+    "business.nature_of_business": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "industry type derived from the NAICS code (NAICS 238220 matched prefix 2382)"
+    },
+    "general_liability.classifications.0.premium_basis_code": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "the form wants the single-letter code; derived from the premium basis word"
+    },
+    "general_liability.classifications.1.premium_basis_code": {
+      "source": "derived",
+      "page": null,
+      "confidence": "high",
+      "note": "the form wants the single-letter code; derived from the premium basis word"
+    },
+    "form_meta.completion_date": {
+      "source": "assumed_default",
+      "page": null,
+      "confidence": "low",
+      "note": "date this record was built, not a value from the export"
+    }
+  },
+  "conflicts": [
+    {
+      "path": "policy.effective_date",
+      "detail": "the export carried more than one term: Expiring beginning 07/01/2025; Renewal Requested beginning 07/01/2026. Used 07/01/2026, the row marked Renewal Requested. Confirm the requested term with the account manager.",
+      "values": [
+        {
+          "value": "07/01/2025",
+          "source": "epic_policy.csv (Expiring row)"
+        },
+        {
+          "value": "07/01/2026",
+          "source": "epic_policy.csv (Renewal Requested row)"
+        }
+      ]
+    }
+  ]
+}

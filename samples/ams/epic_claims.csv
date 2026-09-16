@@ -1,0 +1,4 @@
+ClientLookupCode,ClaimNumber,PolicyNumber,LineOfBusiness,DateOfLoss,DateReported,ClaimStatus,LossDescription,AmountPaid,AmountReserved,Subrogation,ValuedAsOf
+BRIGHTMECH-01,GL-224-9911,CGL-4471902-03,General Liability,03/14/2024,,Closed,Water damage to tenant space during pipe replacement,18400,0,,05/31/2026
+BRIGHTMECH-01,GL-224-1327,CGL-4471902-03,General Liability,11/02/2024,,Open,"Slip and fall, jobsite visitor, contusion",6250,2500,,05/31/2026
+BRIGHTMECH-01,GL-225-4402,CGL-4471902-03,General Liability,08/19/2025,,Open,Property damage - HVAC unit fell during install,31900,15000,,05/31/2026
