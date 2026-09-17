@@ -1,6 +1,6 @@
 ---
 name: acord-form-fill
-description: Fill ACORD forms and carrier applications from account documents. Use this skill whenever the user uploads or mentions insurance account artifacts — declarations pages, dec pages, policies, quotes, loss runs, binders, AMS or agency-management-system exports — and wants a form, application, or submission produced. Trigger on any mention of ACORD, ACORD 125, ACORD 126, ACORD 130, commercial insurance applications, carrier supplementals, submission prep, or re-keying account data into forms, even if the user does not name a specific form number. Also use when asked to extract structured account data from insurance documents, or to check which fields on an application can be auto-filled and which still need the insured.
+description: Fill ACORD forms and carrier applications from account documents. Use this skill whenever the user uploads or mentions insurance account artifacts — declarations pages, declarations pages, policies, quotes, loss runs, binders, AMS or agency-management-system exports — and wants a form, application, or submission produced. Trigger on any mention of ACORD, ACORD 125, ACORD 126, ACORD 130, commercial insurance applications, carrier supplementals, submission prep, or re-keying account data into forms, even if the user does not name a specific form number. Also use when asked to extract structured account data from insurance documents, or to check which fields on an application can be auto-filled and which still need the insured.
 ---
 
 # ACORD form fill
@@ -14,7 +14,7 @@ document-type × form-type pair and collapses the moment a new carrier supplemen
 arrives. Instead route everything through one canonical account record:
 
 ```
-dec page ─┐                              ┌─ ACORD 125
+declarations page ─┐                              ┌─ ACORD 125
 AMS CSV  ─┼─► canonical account JSON ─►──┼─ ACORD 126
 loss run ─┘   (extract once)             └─ carrier supplemental
 ```
@@ -87,7 +87,8 @@ and `<form_id>_review.json` per section.
 Lead with what needs human attention, not with what worked. Use this shape:
 
 ```
-Filled ACORD 125 — 61 of 148 mapped fields (41%); 148 of 924 packet fields mapped
+Filled ACORD 125 — 61 of 149 mapped fields (41%); 77 of 109 applicable resolved (71%)
+149 of 924 packet fields mapped
 
 Must fix before submission (3):
   • <field> — <why>
@@ -99,8 +100,12 @@ Filled PDF: output/acord_125_filled.pdf
 Review report: output/acord_125_review.md
 ```
 
-Report two numbers, not one. **Coverage** is how much of the form was mapped at
-all; **fill rate** is how much of what was mapped got filled. A packet has
+Report both rates the script prints, not one. **Coverage** is how much of the
+form was mapped at all. **Fill rate** is values written over every mapped field.
+**Resolution rate** is values written plus checkboxes correctly left unticked,
+over only the fields that can apply to this account — it excludes repeating rows
+the account has no data for. Say which rate you are quoting, and pass on the
+script's request to confirm which one the customer wants to be measured on. A packet has
 hundreds of carrier, underwriter, signature and office-use fields that no
 extraction can or should touch, so a single blended percentage understates the
 tool badly. Say which sections were deliberately left unmapped.

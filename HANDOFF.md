@@ -9,7 +9,7 @@ the panel rather than just recited.
 ## The assignment
 
 Sales Engineer take-home for Cooper AI, a company building AI agents for
-insurance brokerages — their product reads dec pages, loss runs and applications,
+insurance brokerages — their product reads declarations pages, loss runs and applications,
 fills ACORD forms and carrier supplementals, and flags what's missing for a
 broker to confirm.
 
@@ -43,7 +43,7 @@ fields) that an interviewer provided.
 
 Two runs, because the honest answer is two numbers.
 
-**Run 1 — documents only** (`samples/account.json`, extracted from the dec page,
+**Run 1 — documents only** (`samples/account.json`, extracted from the declarations page,
 loss run and AMS export and nothing else):
 
 | Section | Mapped | Auto-filled | Fill rate | Blockers | Review |
@@ -90,7 +90,7 @@ acord-form-fill/
 ├── assets/
 │   ├── forms/acord_submission_packet.pdf
 │   └── mappings/{acord_125,acord_126}.yaml
-└── samples/                      # dec page, loss run, AMS CSV, account.json,
+└── samples/                      # declarations page, loss run, AMS CSV, account.json,
                                   # account_sparse.json (failure-case demo)
 ```
 
@@ -107,7 +107,7 @@ mapping per form. ACORD 126's header reads the same canonical paths as ACORD
 125, so the second section cost about fifteen minutes. This is the answer to
 "how does it scale to more forms, lines and carriers."
 
-**Claude extracts, Python fills.** Reading a dec page and deciding that "Form of
+**Claude extracts, Python fills.** Reading a declarations page and deciding that "Form of
 Business: Corporation" means `applicant.entity_type = "Corporation"` requires
 judgement. Writing it into a PDF field does not. The model never touches the
 PDF, so errors are attributable to the extraction (visible in `account.json`) or

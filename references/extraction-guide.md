@@ -24,7 +24,7 @@ records go stale. Some agencies keep the opposite discipline. When precedence
 decides a value, say so in the provenance note so the reviewer can disagree.
 
 One deliberate exception: on a **renewal**, term dates come from the AMS or the
-submission request, not from the declarations page, because the dec page shows
+submission request, not from the declarations page, because the declarations page shows
 the expiring term. Getting this backwards puts a policy period in the past,
 which is the single most common extraction error on renewals.
 
@@ -77,7 +77,7 @@ one you used, and why.
 ```json
 {
   "path": "policy.effective_date",
-  "detail": "dec page shows the expiring term beginning 07/01/2025; AMS shows the renewal term beginning 07/01/2026. Used the AMS value on the assumption this is a renewal. Confirm with the account manager.",
+  "detail": "declarations page shows the expiring term beginning 07/01/2025; AMS shows the renewal term beginning 07/01/2026. Used the AMS value on the assumption this is a renewal. Confirm with the account manager.",
   "values": [
     {"value": "07/01/2025", "source": "dec_page.pdf"},
     {"value": "07/01/2026", "source": "ams_export.csv"}
@@ -92,7 +92,7 @@ higher-precedence source, and note it.
 
 ## Common traps
 
-**Dec page limits are the expiring program, not the request.** They are the
+**Declarations page limits are the expiring program, not the request.** They are the
 right starting point for a renewal and the wrong answer if the insured asked for
 different limits. Mark them `medium` and note the assumption.
 
@@ -102,7 +102,7 @@ Defaulting to location 1 is reasonable; doing it silently is not. Mark `low`.
 **Loss runs are valued as of a date.** Capture that date. A loss run valued eight
 months ago understates development and underwriters notice.
 
-**The named insured on a dec page may be one entity of several.** If you see
+**The named insured on a declarations page may be one entity of several.** If you see
 "et al", additional named insureds, or a schedule of entities, flag it rather
 than dropping the others.
 
