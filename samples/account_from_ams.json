@@ -6,6 +6,7 @@
       "fein": "06-1583427",
       "entity_type": "Corporation",
       "contact_name": "Dana Whitfield",
+      "contact_email": "dwhitfield@brightwatermech.com",
       "website": "www.brightwatermech.com",
       "business_phone": "(203) 555-0148",
       "mailing_address": {
@@ -189,6 +190,12 @@
       "page": null,
       "confidence": "high",
       "note": "column PrimaryContactName"
+    },
+    "applicant.contact_email": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PrimaryContactEmail"
     },
     "applicant.website": {
       "source": "epic_client.csv",
