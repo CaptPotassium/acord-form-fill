@@ -24,6 +24,8 @@ fields:
   ACORD_AgencyName:
     path: producer.agency_name
     required: true
+  ACORD_Contact1_Name:
+    path: applicant.contact_name
   ACORD_ProducerContact:
     path: producer.contact_name
   ACORD_ProducerPhoneNumber:
