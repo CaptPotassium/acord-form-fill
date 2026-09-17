@@ -32,6 +32,7 @@ files:
       DBAName:               {path: applicant.dba, confidence: high}
       FEIN:                  {path: applicant.fein, confidence: high}
       LegalEntityType:       {path: applicant.entity_type, confidence: high}
+      PrimaryContactName:    {path: applicant.contact_name, confidence: high}
       WebAddress:            {path: applicant.website, confidence: high}
       BusinessPhone:         {path: applicant.business_phone, confidence: high}
       MailingAddressLine1:   {path: applicant.mailing_address.street, confidence: high}
