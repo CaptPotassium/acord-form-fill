@@ -62,6 +62,48 @@ cancellation, bankruptcy, judgements, foreign operations, safety program. No
 declarations page or AMS export answers those, ever. Flagging them is the tool
 telling a CSR to make a phone call.
 
+## Discovery questions and assumptions
+
+I did not get the 30-minute discovery call, so this is the call I would have run.
+Each question below changed something specific in the build — the right-hand
+column says what. `DISCOVERY.md` holds the full version: seven sections, a
+timed agenda, and a consolidated assumption ledger with a cost-if-wrong estimate
+against each item.
+
+The questions are ordered by how much the answer would change the code.
+
+| # | Question I'd ask | Assumption I built on | What it touches in the code |
+|---|---|---|---|
+| 1 | **Which agency management system do you use?** | Applied Epic. | `assets/ams/applied_epic.yaml` is the whole answer. A different system is a copy of that file, not new code. |
+| 2 | **Can you send me two or three real exports, so I can see what you keep and how?** | Five related CSVs — client, policy, locations, claims, classifications — joined on a client lookup code. | Every column name in `assets/ams/applied_epic.yaml`. **This is the highest-value question on the call.** Epic's export is driven by a mapping file each agency configures, so there is no standard schema to assume. One real export replaces a day of guessing. |
+| 3 | **Which fields must be exactly right, which just need a look, and which don't matter?** | FEIN, policy dates and state codes must be exact; contact details and descriptions need a glance; office-use fields don't matter. | The `validate:` and `required:` keys in the form mappings. Three levels: no `validate` writes silently; `validate` alone writes it and flags it for review; `validate` plus `required` leaves the box empty and blocks the submission. That choice is per field, set by what a wrong value costs. |
+| 4 | **Which one or two forms eat the most hours?** | ACORD 125 and 126 — 125 is common to every commercial submission, and general liability is the most-written line in a mid-market book. | Which mappings exist in `assets/mappings/`. One YAML per form, so a different answer reorders the roadmap without changing the engine. |
+| 5 | **When your system holds both the expiring policy and the renewal, which term should the application show?** | The renewal. The expiring term is recorded as prior-carrier history instead. | `select: where: {PolicyStatus: Renewal Requested}` in the Epic mapping. Getting this backwards puts a policy period in the past, which is the most common error on a renewal submission — so the choice is recorded as a conflict with both values, not made silently. |
+| 6 | **When your system and a carrier document disagree, which one wins?** | The carrier document, on the theory that it is issued and the system record drifts — with one exception: on a renewal, term dates come from the system, because the declarations page shows the term about to expire. | Source precedence in `references/extraction-guide.md`, and the `conflicts` block in the account record. If their system is the cleaner record, the precedence flips — that is a documentation change, not a code change. |
+| 7 | **What's a typical account — how many locations, how many class codes?** | Two to four locations, two class codes. | The `indices:` lists on each repeating section, and the metric. The form prints four location rows; an account with two leaves 28 fields that cannot apply, and counting those as misses would penalise the tool for the account being smaller than the form. This question is why the report separates *applicable* fields from *mapped* fields. |
+| 8 | **Are your incoming documents digital, or scanned and faxed?** | Digital and text-extractable. | Nothing — and that is the risk. No OCR stage exists. If a meaningful share are scans, that has to be built before the document path works at all. The AMS export path is unaffected, which is an argument for leading a pilot with the export. |
+| 9 | **What do you do today when a field is missing — leave it blank, or apply a house default?** | Leave it blank and circle back. | The review report lists what is missing rather than inventing a value. If they have standing defaults ("$1M/$2M unless told otherwise"), those become config and the review queue shrinks. |
+| 10 | **Who signs the finished application, and what happens if a field is wrong?** | A licensed producer signs it and carries errors-and-omissions exposure, so they will not accept a fill they cannot audit. | The provenance layer. Every value carries source file, page and confidence, and the review report can trace any field back to the column or document it came from. |
+| 11 | **Which fill-rate definition do you want the pilot measured on?** | None — I deliberately did not decide this. | `count_metrics()` reports both a fill rate and a resolution rate, and every review report carries an `ACTION REQUIRED` asking for this confirmation. A vendor picking its own denominator is how these numbers stop meaning anything; if they already have a benchmark, its definition wins over both of mine. |
+
+**The one I would not trade.** Question 2. Everything else can be answered
+approximately and corrected later. Without one real export I am guessing at
+column names, and every guess is a field that silently fails to fill.
+
+**The numbers in `DISCOVERY.md` section 1 are illustrative.** Volume,
+minutes-per-submission and loaded hourly rate are plausible mid-market figures
+chosen to make the ROI arithmetic concrete, not researched benchmarks. They are
+the first thing I would replace, and replacing them changes the business case
+without changing any code.
+
+**One assumption has since been measured.** I guessed that ~70% of ACORD 125/126
+fields would be derivable from available data, and flagged that if the real
+number were nearer 45% this would be a review-and-complete tool rather than a
+fill tool. Measured: 74.5% of applicable fields resolved, 43.0% of mapped fields
+written. Both scenarios turned out to be true at once, depending on the
+denominator — which is exactly why question 11 exists and why the metric ships
+with a question attached instead of a single number.
+
 ## Architecture
 
 **One canonical account record in the middle.** Mapping documents to forms
