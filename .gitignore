@@ -4,3 +4,4 @@ output_sparse/
 output_ams/
 __pycache__/
 *.pyc
+.DS_Store
