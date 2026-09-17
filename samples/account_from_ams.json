@@ -5,6 +5,7 @@
       "dba": "Brightwater Mechanical",
       "fein": "06-1583427",
       "entity_type": "Corporation",
+      "contact_name": "Dana Whitfield",
       "website": "www.brightwatermech.com",
       "business_phone": "(203) 555-0148",
       "mailing_address": {
@@ -155,7 +156,7 @@
       "years_covered": 2
     },
     "form_meta": {
-      "completion_date": "09/16/2026"
+      "completion_date": "09/17/2026"
     }
   },
   "provenance": {
@@ -182,6 +183,12 @@
       "page": null,
       "confidence": "high",
       "note": "column LegalEntityType"
+    },
+    "applicant.contact_name": {
+      "source": "epic_client.csv",
+      "page": null,
+      "confidence": "high",
+      "note": "column PrimaryContactName"
     },
     "applicant.website": {
       "source": "epic_client.csv",
