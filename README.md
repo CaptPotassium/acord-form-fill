@@ -102,7 +102,8 @@ The questions are ordered by how much the answer would change the code.
 | 8 | **Are your incoming documents digital, or scanned and faxed?** | Digital and text-extractable. | Nothing — and that is the risk. No OCR stage exists. If a meaningful share are scans, that has to be built before the document path works at all. The AMS export path is unaffected, which is an argument for leading a pilot with the export. |
 | 9 | **What do you do today when a field is missing — leave it blank, or apply a house default?** | Leave it blank and circle back. | The review report lists what is missing rather than inventing a value. If they have standing defaults ("$1M/$2M unless told otherwise"), those become config and the review queue shrinks. |
 | 10 | **Who signs the finished application, and what happens if a field is wrong?** | A licensed producer signs it and carries errors-and-omissions exposure, so they will not accept a fill they cannot audit. | The provenance layer. Every value carries source file, page and confidence, and the review report can trace any field back to the column or document it came from. |
-| 11 | **Which fill-rate definition do you want the pilot measured on?** | None — I deliberately did not decide this. | `count_metrics()` reports both a fill rate and a resolution rate, and every review report carries an `ACTION REQUIRED` asking for this confirmation. A vendor picking its own denominator is how these numbers stop meaning anything; if they already have a benchmark, its definition wins over both of mine. |
+| 11 | **What do you track today around submission throughput and accuracy — anything at all?** Not revenue or retention, but form-level numbers: submissions per CSR per week, rework from carriers, policy-checking findings, error rates caught before binding. And if you outsource any of it, what accuracy does that contract guarantee? | **Almost nothing at form level.** Agencies benchmark financial and relational metrics — revenue per employee, retention, hit ratio, organic growth, often against the Big "I" Best Practices Study — but very few measure forms processed or form accuracy. Where accuracy does surface it is lagging and indirect: E&O claims, policy-checking findings, carrier rework requests, or an outsourcer's SLA. | **This is why the product ships its own measurement.** There is no baseline to improve on, so the review queue doubles as the instrument: every reviewer correction is a labelled error. It also sets the real competitive bar — the alternative is usually not "a CSR types it" but "we send it to Patra or ReSource Pro," which is contracted at roughly 99% accuracy per transaction. That is the number a pilot is implicitly compared against, and it is why *silent* error rate matters more than fill rate. |
+| 12 | **Which fill-rate definition do you want the pilot measured on?** | None — I deliberately did not decide this. | `count_metrics()` reports both a fill rate and a resolution rate, and every review report carries an `ACTION REQUIRED` asking for this confirmation. A vendor picking its own denominator is how these numbers stop meaning anything; if they already have a benchmark, its definition wins over both of mine. |
 
 **The one I would not trade.** Question 2. Everything else can be answered
 approximately and corrected later. Without one real export I am guessing at
@@ -119,7 +120,7 @@ fields would be derivable from available data, and flagged that if the real
 number were nearer 45% this would be a review-and-complete tool rather than a
 fill tool. Measured on the Applied Epic export path: 74.3% of applicable fields
 resolved, 43.0% of mapped fields written. Both scenarios turned out to be true at once, depending on the
-denominator — which is exactly why question 11 exists and why the metric ships
+denominator — which is exactly why question 12 exists and why the metric ships
 with a question attached instead of a single number.
 
 ## Architecture
@@ -179,6 +180,90 @@ acord-form-fill/
 Two mapping layers, both configuration: `assets/ams/` absorbs a customer's
 column names, `assets/mappings/` absorbs a form's field names. The Python
 between them never changes for either.
+
+## Scaling to more forms, lines, carriers and systems
+
+Four different axes, and they do not cost the same. Conflating them is how
+roadmaps get promised badly, so here is each one separately with what it
+actually costs.
+
+### 1. Another form on a line already modelled — cheap, and proven
+
+One YAML file. No Python.
+
+ACORD 126 cost about fifteen minutes on top of ACORD 125, because its applicant
+header reads the same canonical paths 125 already used. `dump_fields.py` emits a
+stub with every field name pre-filled; the work is assigning paths.
+
+**Cost: 20–40 minutes, doable by a non-engineer.** This is the axis the demo
+proves live — adding a field takes three lines.
+
+### 2. Another carrier's supplemental — cheap *if* the line is already modelled
+
+A carrier supplemental is structurally identical to an ACORD form: an AcroForm
+PDF with named fields. Nothing about the engine changes.
+
+The variable is how much of it the canonical schema already answers. Take the
+four supplementals from the brief:
+
+| Form | Reuses existing paths | Needs new schema |
+|---|---|---|
+| Hartford Contractors' Supplemental | Applicant, premises, GL limits, class codes — most of it | Subcontractor spend and certificate tracking, tools and equipment |
+| AmTrust Liquor Liability | Applicant, premises | Liquor receipts split, server training, hours of service |
+| AmWINS Hotel/Motel | Applicant, premises, GL | Room counts, pool and spa, food service, seasonal occupancy |
+| RT Specialty Trucking | Applicant | Radius of operation, commodities, driver schedules, power units — effectively a new line |
+
+**Cost: ~30 minutes for the overlapping two-thirds, plus schema work for the
+carrier-specific questions.** The first supplemental on a line is the expensive
+one; the second and third on that same line are nearly free, because carriers
+ask overlapping questions.
+
+### 3. Another line of business — this is the expensive axis, and it is the schema
+
+Adding property or workers compensation is not a mapping exercise. It is
+canonical-schema design, and the schema is the one thing that cannot be changed
+carelessly: mappings reference paths by name, so a rename silently breaks every
+form at once. **Extend by adding paths, never by renaming.**
+
+| Line | What the schema needs | Honest estimate |
+|---|---|---|
+| Property (ACORD 140) | Construction type, year built, protection class, sprinklers, roof age, replacement-cost valuation | ~1 day. Already in this packet and already field-dumped. |
+| Workers comp (ACORD 130) | Per-state payroll by class code, experience modification factor, owner inclusion/exclusion, prior carrier loss detail | ~1 day, and genuine domain modelling — this is the one I would not estimate casually |
+| Commercial auto | Vehicle schedule, driver schedule with MVR status, radius, garaging | ~1 day |
+
+**Cost: about a day per line, mostly thinking rather than typing.** Once a line
+is modelled, every carrier supplemental on that line drops back to axis 2.
+
+### 4. Another agency management system — cheap, but needs one real export
+
+The input side is configuration too. `assets/ams/applied_epic.yaml` maps a
+customer's column names and filenames to canonical paths, so supporting AMS360,
+HawkSoft or EZLynx means copying that file and renaming columns.
+
+This matters more than it sounds, because **Applied Epic's export has no fixed
+schema** — it is driven by a mapping file each agency configures. So the columns
+differ between two brokerages both running Epic. Any design that hard-codes a
+schema breaks on customer number two.
+
+**Cost: an afternoon per customer, and the only real prerequisite is one real
+export file.** That is why "can you send me two or three real exports" is the
+question I would not trade on a discovery call.
+
+### What this means for a roadmap
+
+```
+cheap    ├─ another form, line already modelled        20–40 min
+         ├─ another carrier supplemental, same line    ~30 min + carrier questions
+         ├─ another AMS                                an afternoon + one real export
+expensive└─ another line of business                   ~1 day of schema design
+```
+
+**The bottleneck is the canonical schema, not the form count.** A form that
+reads paths which already exist is nearly free. A form that needs new paths
+costs schema design regardless of how simple the PDF looks. So the right
+sequencing question is never "which forms do you want" — it is **"which lines do
+you write most,"** because lines are what cost money and forms are what come
+free afterwards.
 
 ## What the real form taught the code
 
